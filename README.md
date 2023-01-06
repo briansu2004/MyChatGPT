@@ -33,3 +33,7 @@ Open the VS Code Command Palette and Type ChatGPT: Reset token, this will prompt
 ## Integrate to IntelliJ
 
 ...
+
+## Coding questions
+
+How can I make a Post request in JS?
