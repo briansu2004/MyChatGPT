@@ -21,3 +21,37 @@ InputStream inputStream = resource.getInputStream();
 ```
 
 Note that the ClasspathResource method expects a path relative to the src/test/resources directory, so you don't need to include that part in the path.
+
+## [Java] What is the package for ClasspathResource in Java?
+
+The ClasspathResource is not a standard package or class in Java. However, it is possible that you may be referring to the ClassPathResource class provided by the Spring Framework.
+
+The ClassPathResource class is part of the Spring Core module and provides a way to access resources on the classpath. You can use it to load configuration files, properties files, or other resources that are located on the classpath of your application.
+
+To use the ClassPathResource class, you need to include the Spring Core library in your project. You can do this by adding the following dependency to your project's pom.xml file if you're using Maven:
+
+```xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>{version}</version>
+</dependency>
+```
+
+If you're using Gradle, you can add the following to your build.gradle file:
+
+```python
+dependencies {
+    implementation 'org.springframework:spring-core:{version}'
+}
+```
+
+Once you have included the Spring Core library in your project, you can use the ClassPathResource class as follows:
+
+```java
+ClassPathResource resource = new ClassPathResource("path/to/resource");
+InputStream inputStream = resource.getInputStream();
+// use the input stream to read the contents of the resource
+```
+
+In the above example, replace "path/to/resource" with the actual path of the resource you want to access.
