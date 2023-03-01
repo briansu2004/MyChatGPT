@@ -55,3 +55,15 @@ InputStream inputStream = resource.getInputStream();
 ```
 
 In the above example, replace "path/to/resource" with the actual path of the resource you want to access.
+
+## [Java] In my Java Sprint boot project., I want to create a package for all utilities and helpers. How to name this package?
+
+A commonly used convention for naming packages that contain utility and helper classes in Java is to use the prefix "util" or "helper". So, you could name your package as:
+
+`com.yourcompany.yourproject.util`
+
+or
+
+`com.yourcompany.yourproject.helper`
+
+You can choose either of them depending on which one fits better with the naming conventions you are already using in your project.
