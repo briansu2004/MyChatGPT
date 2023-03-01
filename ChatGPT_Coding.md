@@ -75,3 +75,31 @@ In general, it is not a good practice to autowire util classes in a Spring Boot 
 Instead of autowiring a util class, you should simply import it into the class where you need to use its methods and call the methods directly. This approach is simpler and more efficient, as it avoids the overhead of Spring's dependency injection framework.
 
 However, if your util class has dependencies on other Spring-managed beans, such as repositories or services, then you can consider autowiring it to make use of those dependencies. But in that case, you should also consider refactoring the util class to be a Spring-managed bean itself, rather than a static class. This will make it easier to manage its dependencies and improve the testability of your code.
+
+## [Java] Can you give me a good example for a Java util or helper class?
+
+Sure, here's an example of a Java util class that generates a random alphanumeric string of a specified length:
+
+```java
+import java.security.SecureRandom;
+import java.util.Random;
+
+public class RandomStringUtils {
+    private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private static final Random random = new SecureRandom();
+
+    public static String generateRandomString(int length) {
+        StringBuilder builder = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(ALPHA_NUMERIC_STRING.length());
+            char randomChar = ALPHA_NUMERIC_STRING.charAt(randomIndex);
+            builder.append(randomChar);
+        }
+        return builder.toString();
+    }
+}
+```
+
+This util class has a single public method generateRandomString that takes an integer length and returns a random alphanumeric string of that length. The class uses a SecureRandom instance to generate random numbers and the ALPHA_NUMERIC_STRING constant to define the set of characters that can be used in the random string.
+
+This class can be useful in many scenarios, such as generating random passwords, generating unique IDs for objects, or generating random session tokens.
