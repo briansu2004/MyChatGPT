@@ -67,3 +67,11 @@ or
 `com.yourcompany.yourproject.helper`
 
 You can choose either of them depending on which one fits better with the naming conventions you are already using in your project.
+
+## [Java] In my Java Spring Boot project, is it good to autowire my util class?
+
+In general, it is not a good practice to autowire util classes in a Spring Boot project. The main reason is that util classes are usually stateless and contain only static methods, which means that they do not have any internal state that needs to be managed by Spring's dependency injection framework.
+
+Instead of autowiring a util class, you should simply import it into the class where you need to use its methods and call the methods directly. This approach is simpler and more efficient, as it avoids the overhead of Spring's dependency injection framework.
+
+However, if your util class has dependencies on other Spring-managed beans, such as repositories or services, then you can consider autowiring it to make use of those dependencies. But in that case, you should also consider refactoring the util class to be a Spring-managed bean itself, rather than a static class. This will make it easier to manage its dependencies and improve the testability of your code.
