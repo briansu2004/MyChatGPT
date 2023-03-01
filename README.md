@@ -2,9 +2,13 @@
 
 My ChatGPT
 
-## ChatGPT Coding
+## ChatGPT interview
 
-[ChatGPT Coding](ChatGPT_Coding.md)
+[ChatGPT interview](ChatGPT_Interview.md)
+
+## ChatGPT coding
+
+[ChatGPT coding](ChatGPT_Coding.md)
 
 ## IDE integrations (failed)
 
