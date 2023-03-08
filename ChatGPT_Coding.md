@@ -177,3 +177,24 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 ```
 
 Note: This code assumes that you're using JSON Web Tokens (JWT) for authentication. If you're using a different token format, you'll need to adjust the code accordingly.
+
+## [Java] In my spring boot project, how do I import org.springframework.security packages?
+
+To import the org.springframework.security packages into your Spring Boot project, you will need to follow these steps:
+
+Add the spring-boot-starter-security dependency to your pom.xml file if you are using Maven or to your build.gradle file if you are using Gradle. Here is an example for Maven:
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+Once you have added the dependency, you can start importing the org.springframework.security packages into your Java classes as needed. For example, you can add the following import statement to your Java class:
+
+```java
+import org.springframework.security.core.Authentication;
+```
+
+That's it! You should now be able to use the Spring Security packages in your Spring Boot project.
