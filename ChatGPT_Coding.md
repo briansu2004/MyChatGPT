@@ -198,3 +198,24 @@ import org.springframework.security.core.Authentication;
 ```
 
 That's it! You should now be able to use the Spring Security packages in your Spring Boot project.
+
+## [Java] In my spring boot project, there was an "application.yml" file. Then I added a new file called "application-security-local.yml". Looks like the new file can't be read in my code. How to fix it?
+
+By default, Spring Boot reads the application.yml file for configuration properties. However, if you have created a new file called application-security-local.yml, Spring Boot may not be able to read it automatically.
+
+To make Spring Boot recognize the application-security-local.yml file, you can specify its location in the spring.config.name and spring.config.location properties in the application.properties or application.yml file. Here's an example:
+
+Create an application.properties or application.yml file in your project's src/main/resources directory (if you don't already have one).
+
+Add the following lines to the file:
+
+```yaml
+spring.config.name: application, application-security-local
+spring.config.location: classpath:/, classpath:/config/
+```
+
+This tells Spring Boot to look for configuration files with the names application.yml and application-security-local.yml, and to search for them in the root of the classpath and in the config directory of the classpath.
+
+Save the file and restart your Spring Boot application.
+
+After you have made these changes, Spring Boot should be able to read the application-security-local.yml file and load its properties into your application.
