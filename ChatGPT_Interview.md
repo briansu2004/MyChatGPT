@@ -200,3 +200,21 @@ For example, suppose you have a component called app-layout that represents the 
 ```
 
 In this example, ng-container is used to group together the header, content, and footer of the app-layout component. The header, content, and footer attributes are used to differentiate between the different groups of content.
+
+## [Angular] What common ng commands do we use in an Angular project?
+
+Here are some of the most common ng commands used in an Angular project:
+
+```dos
+ng new [project-name] - creates a new Angular project with the given name.
+ng serve - compiles and serves the application in development mode, allowing you to view it in your browser at http://localhost:4200/.
+ng build - compiles the application into an output directory that can be deployed to a server.
+ng generate component [component-name] - generates a new component with the given name.
+ng generate service [service-name] - generates a new service with the given name.
+ng test - runs unit tests for the application.
+ng lint - runs linting checks on the application's code.
+ng update - updates the Angular dependencies in the project to the latest versions.
+ng add [package-name] - adds a new package to the project, such as a third-party library or tool.
+```
+
+These are some of the most commonly used ng commands, but there are many others available as well. You can get a full list of available commands by running ng help or ng --help.

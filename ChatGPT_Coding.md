@@ -103,3 +103,77 @@ public class RandomStringUtils {
 This util class has a single public method generateRandomString that takes an integer length and returns a random alphanumeric string of that length. The class uses a SecureRandom instance to generate random numbers and the ALPHA_NUMERIC_STRING constant to define the set of characters that can be used in the random string.
 
 This class can be useful in many scenarios, such as generating random passwords, generating unique IDs for objects, or generating random session tokens.
+
+## [Java] In my Java Spring Boot project, how do I write to code to verify the token in the request?
+
+To verify the token in the request in a Java Spring Boot project, you can follow the following steps:
+
+Define a secret key that will be used to sign and verify the token. You can store the secret key in a configuration file or as an environment variable.
+
+Create a filter that intercepts all requests and checks if they have a valid token. You can create this filter by implementing the javax.servlet.Filter interface.
+
+In the filter, extract the token from the request header or request parameters, depending on how you send the token. You can use a library like JWT to parse and validate the token.
+
+If the token is valid, set the authenticated user information in the Spring SecurityContextHolder using the Authentication interface. This will allow you to get the user information in subsequent requests.
+
+If the token is not valid, return an unauthorized HTTP status code to the client.
+
+Here's an example of how to implement a token verification filter:
+
+```java
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+@Component
+public class JwtTokenFilter extends OncePerRequestFilter {
+
+    private final String secretKey = "your_secret_key_here";
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
+
+        String header = request.getHeader("Authorization");
+
+        if (header == null || !header.startsWith("Bearer ")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        String token = header.replace("Bearer ", "");
+
+        try {
+            Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+
+            String username = claims.getSubject();
+
+            List<String> roles = new ArrayList<>();
+            if (claims.get("roles") != null) {
+                roles = (List<String>) claims.get("roles");
+            }
+
+            Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, roles);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
+        chain.doFilter(request, response);
+    }
+}
+```
+
+Note: This code assumes that you're using JSON Web Tokens (JWT) for authentication. If you're using a different token format, you'll need to adjust the code accordingly.
