@@ -253,3 +253,11 @@ Here's an example command:
 This will execute the clean goal, which will remove any build artifacts from previous builds, and then execute the run goal, which will run the main class of your project.
 
 Note that the run goal will only work if your project has a main class defined in its pom.xml file or via the -Dexec.mainClass parameter. If your project does not have a main class, you can still use the clean goal to remove any previous build artifacts.
+
+## [Java] What is the jks file?
+
+JKS (Java KeyStore) is a type of file format used to store digital certificates and private keys in Java-based applications. It is a repository of security certificates and it can be used to encrypt and authenticate data, as well as establish secure communication between different parties.
+
+A JKS file is typically created using the keytool command-line utility that is bundled with the Java Development Kit (JDK). The keytool can generate and manage the keys and certificates and then store them in the JKS file format.
+
+The JKS file format is commonly used in Java-based applications such as web servers, application servers, and other software that requires digital certificates and private keys for security purposes. The JKS file format is a proprietary format specific to Java and can only be read by Java-based applications.
