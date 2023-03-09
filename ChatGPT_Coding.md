@@ -219,3 +219,37 @@ This tells Spring Boot to look for configuration files with the names applicatio
 Save the file and restart your Spring Boot application.
 
 After you have made these changes, Spring Boot should be able to read the application-security-local.yml file and load its properties into your application.
+
+## [Git] For my GitHub project, I want to squash all the commits. How do I do that?
+
+To squash all the commits in your GitHub project, you can follow these steps:
+
+```dos
+First, make sure you are on the branch that you want to squash the commits on.
+
+Open your terminal and navigate to your project's directory.
+
+Run the command git rebase -i HEAD~n, where "n" is the number of commits you want to squash. This will open up an interactive rebase window.
+
+In the interactive rebase window, change the word "pick" to "squash" or "s" for all the commits that you want to squash.
+
+Save and close the interactive rebase window.
+
+You may need to resolve any merge conflicts that arise during the rebase process.
+
+Once the rebase process is complete, use the command git push --force to push the changes to your repository.
+```
+
+Note: Squashing commits will rewrite your Git history, so use caution when doing this on shared branches. It's generally a good practice to create a new branch before squashing commits to avoid any unintended changes to the history.
+
+## [Maven] How do I use one maven command to run both clean and run?
+
+To run both clean and run goals in Maven with a single command, you can use the mvn command along with the clean and run goals separated by a space.
+
+Here's an example command:
+
+`mvn clean run`
+
+This will execute the clean goal, which will remove any build artifacts from previous builds, and then execute the run goal, which will run the main class of your project.
+
+Note that the run goal will only work if your project has a main class defined in its pom.xml file or via the -Dexec.mainClass parameter. If your project does not have a main class, you can still use the clean goal to remove any previous build artifacts.
