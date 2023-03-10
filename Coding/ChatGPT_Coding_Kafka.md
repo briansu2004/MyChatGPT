@@ -52,3 +52,42 @@ metadata: Additional metadata about the event, such as the user's browser and IP
 ```
 
 This payload could be used by downstream consumers to perform various analytics tasks, such as tracking user behavior, identifying popular pages, or detecting anomalies in user activity.
+
+## [Kafka] How to define Kafka schema?
+
+In Kafka, you can define the schema for your messages using the Avro schema format, which is a compact and efficient way of describing the structure and data types of your data.
+
+Here are the steps to define a Kafka schema using the Avro schema format:
+
+Define the schema: Start by defining the schema in the Avro schema format. The schema describes the structure and data types of the message. Here's an example schema for a user activity event:
+
+```json
+{
+    "namespace": "com.example",
+    "type": "record",
+    "name": "UserActivity",
+    "fields": [
+        {"name": "event_type", "type": "string"},
+        {"name": "user_id", "type": "string"},
+        {"name": "page_url", "type": "string"},
+        {"name": "timestamp", "type": "string"},
+        {"name": "metadata", "type": {
+            "type": "map",
+            "values": "string"
+            }
+        }
+    ]
+}
+```
+
+This schema defines a UserActivity record with fields for the event_type, user_id, page_url, timestamp, and metadata.
+
+```dos
+Compile the schema: After defining the schema, you need to compile it into a Java class using a schema compiler such as the Avro Maven plugin or the Gradle Avro plugin. This generates a Java class that represents the schema and provides methods for reading and writing messages.
+
+Register the schema: Once you have compiled the schema, you need to register it with a schema registry such as Confluent Schema Registry. The schema registry assigns a unique ID to the schema and stores it for future reference.
+
+Use the schema: Finally, you can use the schema in your Kafka producers and consumers. When you send a message, you encode it using the schema and send the encoded message to Kafka. When you receive a message, you decode it using the schema to extract the data.
+```
+
+By defining and using a schema, you can ensure that your messages are consistent, efficient, and easy to work with. The schema provides a contract between producers and consumers that ensures that they agree on the structure and data types of the messages.
