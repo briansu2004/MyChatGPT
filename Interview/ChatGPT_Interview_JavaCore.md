@@ -82,6 +82,50 @@ Reusability: Encapsulation promotes reusability by enabling the class to be used
 
 In summary, encapsulation is an important concept in Java that helps in promoting data hiding, access control, maintainability, and reusability of code. It is a fundamental principle of object-oriented programming and is widely used in the design and implementation of software systems.
 
+## [Java] What is inheritance in Java, and how is it implemented?
+
+Inheritance in Java is a mechanism that allows a class to inherit the properties and behavior of another class, known as the parent or super class. The class that inherits from the parent class is called the child or sub-class. The child class can inherit all the non-private members (i.e., fields, methods, and nested classes) of the parent class, and it can also add its own unique members.
+
+Inheritance is implemented in Java using the extends keyword, which is used to indicate that a class is a child of another class. Here is an example of how inheritance is implemented in Java:
+
+```java
+public class Animal {
+    protected String name;
+    
+    public Animal(String name) {
+        this.name = name;
+    }
+    
+    public void eat() {
+        System.out.println(name + " is eating.");
+    }
+}
+
+public class Dog extends Animal {
+    public Dog(String name) {
+        super(name);
+    }
+    
+    public void bark() {
+        System.out.println(name + " is barking.");
+    }
+}
+```
+
+In this example, the Animal class is the parent class, and the Dog class is the child class. The Dog class extends the Animal class using the extends keyword. The Dog class inherits the name field and the eat() method from the Animal class, and it also adds its own unique method, bark().
+
+When an object of the Dog class is created, it has access to all the members of the Animal class, as well as the unique members of the Dog class. For example:
+
+```java
+Dog myDog = new Dog("Rex");
+myDog.eat(); // Output: Rex is eating.
+myDog.bark(); // Output: Rex is barking.
+```
+
+In summary, inheritance in Java is a mechanism that enables a class to inherit the properties and behavior of another class, allowing for code reuse and the creation of hierarchical relationships between classes. It is implemented using the extends keyword, and it allows child classes to access and add to the members of the parent class.
+
+## [Java] 2
+
 ## [Java] 3
 
 ## [Java] 21
