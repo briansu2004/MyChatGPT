@@ -276,7 +276,36 @@ In this example, the PI variable is declared as static final, which means that i
 
 The key difference between a final variable and a constant is that a final variable can be assigned a value that can vary depending on the context in which it is used, whereas a constant is always fixed and cannot be changed throughout the program. A final variable is typically used when a variable needs to be assigned a value that cannot be changed later in the program, but the value itself may not be fixed. A constant is typically used when a value needs to be fixed and used throughout the program.
 
-## [Java] 3
+## [Java] What is a static variable in Java
+
+In Java, a static variable is a variable that belongs to the class itself rather than to any particular instance of the class. Static variables are declared using the "static" keyword.
+
+When a variable is declared as static, only one copy of that variable is created and shared among all instances of the class. This means that changes made to the value of a static variable will be visible to all instances of the class.
+
+Here is an example of a static variable in Java:
+
+```java
+public class Example {
+    public static int count = 0;
+}
+```
+
+In this example, the count variable is declared as static, which means that it belongs to the class itself rather than to any particular instance of the class. If we create multiple instances of the Example class and change the value of the count variable in one of them, the change will be visible to all instances of the class:
+
+```java
+Example ex1 = new Example();
+Example ex2 = new Example();
+ex1.count = 10;
+System.out.println(ex2.count); // prints 10
+```
+
+Static variables are typically used to define values that are common to all instances of a class, such as a counter that keeps track of the number of instances of the class that have been created. Static variables can be accessed using the class name rather than an instance of the class, like this:
+
+```java
+int currentCount = Example.count;
+```
+
+Note that static variables are initialized only once, when the class is loaded into memory. If a static variable is not explicitly initialized, it is assigned a default value based on its data type. For example, a static variable of type int is assigned a default value of 0.
 
 ## [Java] 33
 
