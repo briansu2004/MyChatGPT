@@ -124,7 +124,51 @@ myDog.bark(); // Output: Rex is barking.
 
 In summary, inheritance in Java is a mechanism that enables a class to inherit the properties and behavior of another class, allowing for code reuse and the creation of hierarchical relationships between classes. It is implemented using the extends keyword, and it allows child classes to access and add to the members of the parent class.
 
-## [Java] 2
+## [Java] What is polymorphism in Java, and how is it implemented?
+
+Polymorphism in Java is a mechanism that allows objects of different classes to be treated as if they are of the same class. It enables a single interface to be used to represent multiple classes, allowing for code reuse and flexibility.
+
+Polymorphism is implemented in Java through two mechanisms: method overloading and method overriding.
+
+Method Overloading:
+
+Method overloading allows multiple methods with the same name to be defined in a class, as long as they have different parameter lists. The appropriate method to be called is determined at compile time based on the number, type, and order of the arguments passed. Here is an example:
+
+```java
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+    
+    public double add(double a, double b) {
+        return a + b;
+    }
+}
+```
+
+In this example, the Calculator class has two methods named add(), one that takes two integer arguments, and another that takes two double arguments. When the add() method is called, Java determines which version of the method to call based on the types of the arguments passed.
+
+Method Overriding:
+
+Method overriding allows a subclass to provide its own implementation of a method that is already defined in its parent class. The method in the subclass must have the same name, return type, and parameter list as the method in the parent class. Here is an example:
+
+```java
+public class Animal {
+    public void makeSound() {
+        System.out.println("Animal is making a sound.");
+    }
+}
+
+public class Dog extends Animal {
+    public void makeSound() {
+        System.out.println("Dog is barking.");
+    }
+}
+```
+
+In this example, the Animal class has a method named makeSound(), and the Dog class overrides this method to provide its own implementation. When the makeSound() method is called on a Dog object, the implementation in the Dog class is executed, rather than the one in the Animal class.
+
+In summary, polymorphism in Java allows objects of different classes to be treated as if they are of the same class, enabling code reuse and flexibility. It is implemented through method overloading and method overriding, which allow methods to have multiple versions and provide different implementations, respectively.
 
 ## [Java] 3
 
