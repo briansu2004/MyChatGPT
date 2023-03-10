@@ -307,6 +307,45 @@ int currentCount = Example.count;
 
 Note that static variables are initialized only once, when the class is loaded into memory. If a static variable is not explicitly initialized, it is assigned a default value based on its data type. For example, a static variable of type int is assigned a default value of 0.
 
-## [Java] 33
+## [Java] What is a try-catch block in Java, and how does it work?
+
+In Java, a try-catch block is used for exception handling. It is used to catch exceptions that might occur during the execution of a block of code, so that the program can handle the exception gracefully instead of crashing.
+
+Here's how a try-catch block works:
+
+The code that might throw an exception is enclosed in a try block.
+If an exception occurs within the try block, the program jumps immediately to the catch block.
+The catch block specifies the type of exception it can handle, and provides code to handle the exception.
+Here's an example of a try-catch block in Java:
+
+```java
+try {
+    // Code that might throw an exception
+} catch (Exception e) {
+    // Code to handle the exception
+}
+```
+
+In this example, the code that might throw an exception is enclosed in the try block. If an exception occurs, the program jumps to the catch block, which specifies that it can handle any type of exception (using the "Exception" class). The catch block provides code to handle the exception.
+
+The catch block can also specify different types of exceptions that it can handle, using multiple catch blocks:
+
+```java
+try {
+    // Code that might throw an exception
+} catch (IOException e) {
+    // Code to handle IOException
+} catch (SQLException e) {
+    // Code to handle SQLException
+}
+```
+
+In this example, there are two catch blocks: one that handles IOExceptions and another that handles SQLExceptions. If an IOException occurs, the program jumps to the first catch block, and if a SQLException occurs, the program jumps to the second catch block.
+
+By using try-catch blocks, Java programs can handle exceptions gracefully and recover from errors without crashing. It's important to use try-catch blocks wherever exceptions are likely to occur, in order to ensure that the program can handle them properly.
 
 ## [Java] 31
+
+## [Java] 321
+
+## [Java] 3
