@@ -217,6 +217,41 @@ double area = myCircle.getArea();
 
 The key difference between a static method and an instance method is that a static method belongs to the class itself, while an instance method belongs to an object of the class. This means that a static method can be called directly on the class, while an instance method can only be called on an object of the class. Additionally, static methods cannot access instance variables or instance methods directly, since they are not associated with any object. Instance methods, on the other hand, can access both instance variables and static variables, as well as other instance methods and static methods.
 
-## [Java] 21
+## [Java] What is a static class in Java
+
+In Java, there is no concept of a static class in the same way that there is in some other programming languages like C#. In Java, the "static" keyword is used to modify the behavior of variables, methods, and inner classes, but not to declare a class as static.
+
+However, Java does have a concept of a nested static class, which is a static class defined within another class. A nested static class is a class that is declared as static and is defined within another class, and it can be accessed directly using the outer class name. Here is an example:
+
+```java
+public class OuterClass {
+    // instance variable
+    private int value;
+    
+    // static nested class
+    public static class NestedStaticClass {
+        public void printMessage() {
+            System.out.println("Hello from the nested static class!");
+        }
+    }
+}
+```
+
+In this example, the NestedStaticClass is a static class defined within the OuterClass. It can be accessed using the outer class name and the nested class name, like this:
+
+```java
+OuterClass.NestedStaticClass nestedObject = new OuterClass.NestedStaticClass();
+nestedObject.printMessage();
+```
+
+Note that a nested static class can access only static members of its outer class, and it does not have access to the instance variables or instance methods of the outer class. Also, a nested static class can be instantiated without creating an instance of the outer class.
+
+In summary, in Java, there is no concept of a static class in the same way that there is in some other programming languages, but Java does support the concept of a nested static class, which is a static class defined within another class.
+
+## [Java] 32
+
+## [Java] 3
+
+## [Java] 33
 
 ## [Java] 31
