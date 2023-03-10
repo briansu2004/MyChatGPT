@@ -460,7 +460,24 @@ System.out.println(list.get(0));
 
 In this example, we create a new list using Collections.singletonList and add a single string object to the list. The get(0) method returns the only element in the list, which is the string "Hello, World!". Since the list is immutable, any attempt to modify the list, such as adding or removing elements, will result in an UnsupportedOperationException.
 
-## [Kafka] 3
+## [Kafka] What is Kafka client library for Spring Boot ?
+
+The Kafka client library for Spring Boot is called Spring Kafka. Spring Kafka provides a convenient way to integrate Kafka with Spring Boot applications by providing abstractions and integration with Spring's core programming model.
+
+Spring Kafka is built on top of the Kafka Java client library and provides a higher-level abstraction for producing and consuming messages in Kafka. It also provides features such as message filtering, error handling, and serialization/deserialization support for common data formats.
+
+Some of the key features of Spring Kafka include:
+
+```dos
+Auto-configuration of Kafka components based on Spring Boot configuration properties
+Integration with Spring's concurrency model and transaction management
+Support for asynchronous message processing and batch processing
+Easy configuration of message listeners and Kafka producers using annotations and configuration properties
+Built-in support for Spring's Message Conversion API for serialization and deserialization of messages
+Support for interceptors to customize message processing
+```
+
+Overall, Spring Kafka makes it easier to work with Kafka in a Spring Boot application and provides a lot of the boilerplate code required to set up and configure Kafka producers and consumers.
 
 ## [Kafka] 21
 
