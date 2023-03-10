@@ -481,7 +481,40 @@ String arrayString = Arrays.toString(numbers);
 
 In this example, we first declare an array of integers named numbers. We then use some of the array functions provided by the Arrays class to manipulate the array. Finally, we print out the results of these operations to the console.
 
-## [Java] 321
+## [Java] What is Java array binarySearch?
+
+Arrays.binarySearch() is a built-in Java function that allows you to perform a binary search on a sorted array. The function takes two arguments: the array to search and the value to search for.
+
+Here's the syntax for Arrays.binarySearch() in Java:
+
+```java
+public static int binarySearch(type[] a, type key)
+```
+
+The function returns the index of the specified key in the array, or a negative value if the key is not found. The negative value returned indicates the index at which the key would be inserted into the array to maintain its sorted order.
+
+Note that the Arrays.binarySearch() function assumes that the array is sorted in ascending order. If the array is not sorted, the function may not return the correct result. Additionally, if the array contains multiple elements that match the search key, the function may return the index of any one of them.
+
+Here's an example of how to use Arrays.binarySearch() in Java:
+
+```java
+int[] numbers = {1, 2, 4, 5, 6, 7, 8, 9};
+
+// Search for the value 5 in the array
+int index = Arrays.binarySearch(numbers, 5);
+
+if (index >= 0) {
+    System.out.println("The value 5 was found at index " + index);
+} else {
+    System.out.println("The value 5 was not found in the array");
+}
+```
+
+In this example, we first declare an array of integers named numbers. We then use the Arrays.binarySearch() function to search for the value 5 in the array. Finally, we print out a message indicating whether the value was found or not. In this case, the output of the program would be:
+
+```dos
+The value 5 was found at index 3
+```
 
 ## [Java] 3
 
