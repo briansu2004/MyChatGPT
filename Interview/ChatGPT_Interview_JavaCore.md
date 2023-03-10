@@ -516,7 +516,35 @@ In this example, we first declare an array of integers named numbers. We then us
 The value 5 was found at index 3
 ```
 
-## [Java] 3
+## [Java] I have a Java array with millions of integers. The array is sorted. All elements are unique. I want to find an element whose value equals the index. How to write the code the find it with the best performance?
+
+Since the array is sorted and all elements are unique, you can use a binary search algorithm to find an element whose value equals the index. Here's an example of how you can implement this algorithm in Java:
+
+```java
+public static int findElement(int[] arr) {
+    int low = 0;
+    int high = arr.length - 1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        if (arr[mid] == mid) {
+            return mid;
+        } else if (arr[mid] < mid) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    // If no such element is found, return -1
+    return -1;
+}
+```
+
+In this implementation, we first set the low and high indices to the beginning and end of the array, respectively. We then repeatedly calculate the midpoint of the current range, and compare the value of the element at that index to the index itself. If the element is equal to the index, we return the index. If the element is less than the index, we narrow the search range to the upper half of the array. If the element is greater than the index, we narrow the search range to the lower half of the array. We continue this process until we find the element or the search range is exhausted.
+
+The time complexity of this algorithm is O(log n), which is very efficient for large arrays. However, it's important to note that this algorithm assumes that the array is already sorted and that all elements are unique. If either of these assumptions is violated, the algorithm may not return the correct result.
 
 ## [Java] 32133
 
