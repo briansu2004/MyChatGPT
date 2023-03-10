@@ -170,7 +170,52 @@ In this example, the Animal class has a method named makeSound(), and the Dog cl
 
 In summary, polymorphism in Java allows objects of different classes to be treated as if they are of the same class, enabling code reuse and flexibility. It is implemented through method overloading and method overriding, which allow methods to have multiple versions and provide different implementations, respectively.
 
-## [Java] 3
+## [Java] What is a static method in Java, and how is it different from an instance method?
+
+A static method in Java is a method that belongs to a class rather than to an instance of the class. This means that the method can be called directly on the class itself, rather than on an object of the class. Static methods are declared using the "static" keyword.
+
+Here is an example of a static method in Java:
+
+```java
+public class Calculator {
+    public static int add(int a, int b) {
+        return a + b;
+    }
+}
+```
+
+In this example, the add() method is declared as static, which means that it can be called on the Calculator class directly, like this:
+
+```java
+int sum = Calculator.add(5, 7);
+```
+
+In contrast, an instance method in Java is a method that belongs to an object of a class, rather than to the class itself. This means that the method can only be called on an object of the class. Instance methods are not declared using the "static" keyword.
+
+Here is an example of an instance method in Java:
+
+```java
+public class Circle {
+    private double radius;
+    
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+}
+```
+
+In this example, the getArea() method is an instance method because it can only be called on a Circle object, like this:
+
+```java
+Circle myCircle = new Circle(5.0);
+double area = myCircle.getArea();
+```
+
+The key difference between a static method and an instance method is that a static method belongs to the class itself, while an instance method belongs to an object of the class. This means that a static method can be called directly on the class, while an instance method can only be called on an object of the class. Additionally, static methods cannot access instance variables or instance methods directly, since they are not associated with any object. Instance methods, on the other hand, can access both instance variables and static variables, as well as other instance methods and static methods.
 
 ## [Java] 21
 
