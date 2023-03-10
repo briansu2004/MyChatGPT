@@ -283,4 +283,185 @@ In this example, we create a new Kafka producer and use the Kafka Avro serialize
 
 Note that you need to configure the serializer and the schema registry URL in the props object. Also, you need to provide a schema registry client to register the schema and retrieve the schema ID.
 
-## [Kafka]
+## [Kafka] How to decode the Kafka message with the schema?
+
+To decode a Kafka message with a schema, you need to use a deserialization format that is compatible with your schema. Avro is a popular choice for encoding Kafka messages with schemas, and Kafka provides a built-in Avro serializer and deserializer.
+
+Here are the steps to decode a Kafka message with Avro using a schema:
+
+Define the schema: You need to define the schema for the message in Avro format. You can define the schema in JSON or in a separate .avsc file. Make sure that the schema matches the schema used to encode the message.
+
+Here's an example schema for a user activity message:
+
+```json
+{
+  "type": "record",
+  "name": "UserActivity",
+  "namespace": "com.example",
+  "fields": [
+    {"name": "event_type", "type": "string"},
+    {"name": "user_id", "type": "string"},
+    {"name": "page_url", "type": "string"},
+    {"name": "timestamp", "type": "string"},
+    {"name": "metadata", "type": {"type": "map", "values": "string"}}
+  ]
+}
+```
+
+Create an instance of the Kafka Avro deserializer: To deserialize the message, you can use the Kafka Avro deserializer, which takes the schema as a parameter.
+
+```java
+Properties props = new Properties();
+props.put("bootstrap.servers", "localhost:9092");
+props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+props.put("value.deserializer", "io.confluent.kafka.serializers.KafkaAvroDeserializer");
+props.put("schema.registry.url", "http://localhost:8081");
+props.put("specific.avro.reader", "true");
+
+SchemaRegistryClient schemaRegistry = new CachedSchemaRegistryClient("http://localhost:8081", 100);
+int schemaId = schemaRegistry.getLatestSchemaMetadata("user-activity").getId();
+
+KafkaConsumer<String, UserActivity> consumer = new KafkaConsumer<>(props);
+consumer.subscribe(Collections.singletonList("user-activity-topic"));
+```
+
+In this example, we create a new Kafka consumer and use the Kafka Avro deserializer to deserialize the UserActivity message. We also configure the schema registry URL and enable the specific Avro reader, which generates a specific class for each Avro schema.
+
+We retrieve the schema ID from the schema registry using the schema name, which should match the name used to register the schema.
+
+Poll for messages and decode them: To decode the message, you can use the poll() method of the Kafka consumer to retrieve a batch of messages. For each message, you can use the value() method to get the serialized message and pass it to the Kafka Avro deserializer, along with the schema ID.
+
+```java
+while (true) {
+  ConsumerRecords<String, UserActivity> records = consumer.poll(Duration.ofMillis(100));
+  for (ConsumerRecord<String, UserActivity> record : records) {
+    UserActivity userActivity = record.value();
+    // Process the decoded message
+  }
+}
+```
+
+In this example, we use a while loop to continuously poll for messages. For each message, we use the value() method to get the serialized message as a UserActivity object.
+
+Note that you need to configure the deserializer and the schema registry URL in the props object. Also, you need to provide a schema registry client to retrieve the schema ID. Finally, you need to process the decoded message according to your application logic.
+
+## [Kafka] Do you have a payload example of an encoded Kafka message?
+
+Sure! Here's an example of an encoded Kafka message in Avro format, using the schema defined in my previous answer:
+
+```dos
+00 01 08 3B 07 65 6E 67 6C 69 73 68 02 32 30 32 31 2D 30 39 2D 32 35 54 31 36 3A 30 30 3A 30 30 2E 30 30 30 5A 08 70 72 6F 64 75 63 74 01
+```
+
+This encoded message represents a UserActivity record with the following values:
+
+```dos
+timestamp: 2021-09-25T16:00:00.000Z
+product: "product"
+quantity: 1
+```
+
+The encoded message is a binary sequence that contains the bytes of the serialized Avro message. The first byte 00 is the Avro magic byte, followed by the schema ID 01 08, which is the ID of the schema used to encode the message. The remaining bytes represent the serialized message data, which includes the timestamp, product, and quantity fields.
+
+## [Kafka] How to implement the Kafka producer and consumer in my microservices?
+
+Implementing Kafka producer and consumer in microservices can be done by following these steps:
+
+Install Kafka: Firstly, install Kafka on your system or cluster. You can either download Kafka from the official website or use a package manager to install it.
+
+Create Kafka topics: Create Kafka topics that will be used to send and receive messages between producer and consumer.
+
+Add Kafka client library: Add Kafka client library to your microservices project. You can use any Kafka client library based on the programming language you are using.
+
+Configure Kafka producer: Configure Kafka producer with the appropriate settings such as topic name, broker URL, serializer, etc.
+
+Write Kafka producer code: Write the Kafka producer code that sends messages to the Kafka topic.
+
+Configure Kafka consumer: Configure Kafka consumer with the appropriate settings such as topic name, broker URL, deserializer, etc.
+
+Write Kafka consumer code: Write the Kafka consumer code that reads messages from the Kafka topic.
+
+Integrate Kafka with microservices: Finally, integrate the Kafka producer and consumer code with your microservices.
+
+Here is an example of Kafka producer and consumer code in Java using the Apache Kafka client library:
+
+Kafka Producer Code:
+
+```java
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import java.util.Properties;
+
+public class KafkaMessageProducer {
+   public static void main(String[] args) {
+      String topicName = "my_topic";
+      String key = "1";
+      String value = "Hello, World!";
+
+      Properties props = new Properties();
+      props.put("bootstrap.servers", "localhost:9092");
+      props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+      props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+
+      Producer<String, String> producer = new KafkaProducer<>(props);
+      ProducerRecord<String, String> record = new ProducerRecord<>(topicName, value);
+      producer.send(record);
+      producer.close();
+   }
+}
+```
+
+Kafka Consumer Code:
+
+```java
+import org.apache.kafka.clients.consumer.Consumer;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import java.util.Collections;
+import java.util.Properties;
+
+public class KafkaMessageConsumer {
+   public static void main(String[] args) {
+      String topicName = "my_topic";
+
+      Properties props = new Properties();
+      props.put("bootstrap.servers", "localhost:9092");
+      props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+      props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+      props.put("group.id", "test-group");
+
+      Consumer<String, String> consumer = new KafkaConsumer<>(props);
+      consumer.subscribe(Collections.singletonList(topicName));
+
+      while (true) {
+         ConsumerRecords<String, String> records = consumer.poll(1000);
+         for (ConsumerRecord<String, String> record : records) {
+            System.out.println("Received message: (" + record.key() + ", " + record.value() + ") at offset " + record.offset());
+         }
+      }
+   }
+}
+```
+
+Note: The above code is just an example and you may need to modify it based on your use case.
+
+## [Kafka] What is Collections.singletonList in Java?
+
+Collections.singletonList is a Java utility method that returns an immutable list containing only the specified object. The returned list is serializable and implements all the optional list operations, such as get, contains, iterator, and size.
+
+Here's an example of how to use Collections.singletonList:
+
+```java
+List<String> list = Collections.singletonList("Hello, World!");
+System.out.println(list.get(0));
+```
+
+In this example, we create a new list using Collections.singletonList and add a single string object to the list. The get(0) method returns the only element in the list, which is the string "Hello, World!". Since the list is immutable, any attempt to modify the list, such as adding or removing elements, will result in an UnsupportedOperationException.
+
+## [Kafka] 3
+
+## [Kafka] 21
+
+## [Kafka] 31
