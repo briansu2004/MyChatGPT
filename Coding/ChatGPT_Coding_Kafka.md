@@ -210,4 +210,77 @@ int schemaId = restClient.registerSchema(schema, subject);
 
 In this example, we create a new REST client for the schema registry, parse the schema using the Avro library, and register the schema with the schema registry using the REST client. The registerSchema() method returns the ID of the registered schema, which we can use to encode and decode messages.
 
+## [Kafka] How to encode the Kafka message with the schema?
+
+To encode a Kafka message with a schema, you need to use a serialization format that is compatible with your schema. Avro is a popular choice for encoding Kafka messages with schemas, and Kafka provides a built-in Avro serializer and deserializer.
+
+Here are the steps to encode a Kafka message with Avro using a schema:
+
+Define the schema: You need to define the schema for the message in Avro format. You can define the schema in JSON or in a separate .avsc file.
+
+Here's an example schema for a user activity message:
+
+```json
+{
+  "type": "record",
+  "name": "UserActivity",
+  "namespace": "com.example",
+  "fields": [
+    {"name": "event_type", "type": "string"},
+    {"name": "user_id", "type": "string"},
+    {"name": "page_url", "type": "string"},
+    {"name": "timestamp", "type": "string"},
+    {"name": "metadata", "type": {"type": "map", "values": "string"}}
+  ]
+}
+```
+
+Generate the Java class: You can use a code generation tool such as the Avro Maven plugin to generate a Java class from the Avro schema. The generated class will have getters and setters for the fields in the schema.
+
+Here's an example of a generated Java class for the user activity schema:
+
+```java
+public class UserActivity {
+  private String eventType;
+  private String userId;
+  private String pageUrl;
+  private String timestamp;
+  private Map<String, String> metadata;
+  
+  // Getters and setters for fields
+}
+```
+
+Create an instance of the Java class: You can create an instance of the generated Java class and set the values of its fields.
+
+```java
+UserActivity userActivity = new UserActivity();
+userActivity.setEventType("click");
+userActivity.setUserId("user123");
+userActivity.setPageUrl("/home");
+userActivity.setTimestamp("2022-03-10T12:34:56.789Z");
+userActivity.setMetadata(new HashMap<>());
+```
+
+Serialize the message: To serialize the message, you can use the Kafka Avro serializer, which takes the schema as a parameter.
+
+```java
+Properties props = new Properties();
+props.put("bootstrap.servers", "localhost:9092");
+props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+props.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
+props.put("schema.registry.url", "http://localhost:8081");
+
+SchemaRegistryClient schemaRegistry = new CachedSchemaRegistryClient("http://localhost:8081", 100);
+int schemaId = schemaRegistry.register("user-activity", userActivity.getSchema());
+
+KafkaProducer<String, UserActivity> producer = new KafkaProducer<>(props);
+ProducerRecord<String, UserActivity> record = new ProducerRecord<>("user-activity-topic", userActivity);
+producer.send(record);
+```
+
+In this example, we create a new Kafka producer and use the Kafka Avro serializer to serialize the UserActivity message. We also register the schema with the schema registry and store the schema ID in a variable, which we can use later to decode the message. Finally, we send the serialized message to a Kafka topic.
+
+Note that you need to configure the serializer and the schema registry URL in the props object. Also, you need to provide a schema registry client to register the schema and retrieve the schema ID.
+
 ## [Kafka]
