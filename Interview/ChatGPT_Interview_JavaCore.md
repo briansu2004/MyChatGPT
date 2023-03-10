@@ -248,7 +248,33 @@ Note that a nested static class can access only static members of its outer clas
 
 In summary, in Java, there is no concept of a static class in the same way that there is in some other programming languages, but Java does support the concept of a nested static class, which is a static class defined within another class.
 
-## [Java] 32
+## [Java] What is a final variable in Java, and how is it different from a constant?
+
+In Java, a final variable is a variable whose value cannot be changed once it has been assigned a value. Once a final variable has been assigned a value, it cannot be reassigned to a different value. Final variables are declared using the "final" keyword.
+
+Here is an example of a final variable in Java:
+
+```java
+public class Example {
+    public static final int MAX_VALUE = 100;
+}
+```
+
+In this example, the MAX_VALUE variable is declared as final, which means that its value cannot be changed once it has been assigned. This variable is also declared as static, which means that it belongs to the class itself rather than to an instance of the class.
+
+A constant, on the other hand, is a variable whose value cannot be changed throughout the program. In Java, constants are often declared as static final variables. Constants are typically used to define values that are fixed throughout the program, such as mathematical constants or configuration settings.
+
+Here is an example of a constant in Java:
+
+```java
+public class Example {
+    public static final double PI = 3.14159265359;
+}
+```
+
+In this example, the PI variable is declared as static final, which means that it is a constant whose value cannot be changed throughout the program. Constants are typically used to define values that are fixed and used throughout the program.
+
+The key difference between a final variable and a constant is that a final variable can be assigned a value that can vary depending on the context in which it is used, whereas a constant is always fixed and cannot be changed throughout the program. A final variable is typically used when a variable needs to be assigned a value that cannot be changed later in the program, but the value itself may not be fixed. A constant is typically used when a value needs to be fixed and used throughout the program.
 
 ## [Java] 3
 
