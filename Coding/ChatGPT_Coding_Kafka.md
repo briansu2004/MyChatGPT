@@ -91,3 +91,123 @@ Use the schema: Finally, you can use the schema in your Kafka producers and cons
 ```
 
 By defining and using a schema, you can ensure that your messages are consistent, efficient, and easy to work with. The schema provides a contract between producers and consumers that ensures that they agree on the structure and data types of the messages.
+
+## [Kafka] Can you give me an example of the generated Java class from a Kafka schema?
+
+Sure! Here's an example of a Java class generated from the Avro schema we defined in my previous answer:
+
+```java
+package com.example;
+
+import java.util.Map;
+
+import org.apache.avro.Schema;
+import org.apache.avro.reflect.ReflectData;
+
+public class UserActivity {
+    private String eventType;
+    private String userId;
+    private String pageUrl;
+    private String timestamp;
+    private Map<String, String> metadata;
+
+    public UserActivity() {}
+
+    public UserActivity(String eventType, String userId, String pageUrl, String timestamp, Map<String, String> metadata) {
+        this.eventType = eventType;
+        this.userId = userId;
+        this.pageUrl = pageUrl;
+        this.timestamp = timestamp;
+        this.metadata = metadata;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPageUrl() {
+        return pageUrl;
+    }
+
+    public void setPageUrl(String pageUrl) {
+        this.pageUrl = pageUrl;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public Map<String, String> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Map<String, String> metadata) {
+        this.metadata = metadata;
+    }
+
+    public static Schema getSchema() {
+        return ReflectData.get().getSchema(UserActivity.class);
+    }
+}
+```
+
+The generated class provides a constructor, getters, and setters for each field in the schema (eventType, userId, pageUrl, timestamp, and metadata). It also includes a method to get the Avro schema (getSchema()).
+
+When using the Avro library in Java, you can use this class to read and write messages in the Avro format. You can create a new UserActivity instance, set its fields, and write it to Kafka using an Avro serializer. When you read a message from Kafka, you can use the Avro deserializer to decode the message into a UserActivity instance and access its fields.
+
+## [Kafka] How to Register the Kafka schema?
+
+To register a Kafka schema, you need to use a schema registry. A schema registry is a centralized service that manages schemas and provides a unique ID for each schema. One popular schema registry is Confluent Schema Registry, which is an open-source service developed by the creators of Kafka.
+
+Here are the steps to register a Kafka schema using Confluent Schema Registry:
+
+1. Start the schema registry: You can start a local instance of the Confluent Schema Registry using Docker or by running it as a standalone Java process.
+
+2. Create a new subject: A subject is a namespace for a group of related schemas. You can create a new subject by making a POST request to the `/subjects/<subject-name>/versions` endpoint of the schema registry API.
+
+For example, to create a subject for our UserActivity schema, you can make a POST request to /subjects/user-activity/versions.
+
+3. Upload the schema: To upload the schema, you can make a POST request to the `/subjects/<subject-name>/versions` endpoint with the schema in the request body.
+
+For example, to upload our UserActivity schema, you can make a POST request to `/subjects/user-activity/versions` with the schema in the request body:
+
+```json
+{
+  "schema": "{\"type\":\"record\",\"name\":\"UserActivity\",\"namespace\":\"com.example\",\"fields\":[{\"name\":\"event_type\",\"type\":\"string\"},{\"name\":\"user_id\",\"type\":\"string\"},{\"name\":\"page_url\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":\"string\"},{\"name\":\"metadata\",\"type\":{\"type\":\"map\",\"values\":\"string\"}}]}"
+}
+```
+
+The schema registry will parse the schema and assign a unique ID to it.
+
+Retrieve the schema ID: After uploading the schema, the schema registry will return a response with the ID of the registered schema. You can store this ID in your application and use it to encode and decode messages.
+Here's an example of how to retrieve the schema ID using the Confluent Schema Registry API in Java:
+
+```java
+String subject = "user-activity";
+String schemaString = "{\"type\":\"record\",\"name\":\"UserActivity\",\"namespace\":\"com.example\",\"fields\":[{\"name\":\"event_type\",\"type\":\"string\"},{\"name\":\"user_id\",\"type\":\"string\"},{\"name\":\"page_url\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":\"string\"},{\"name\":\"metadata\",\"type\":{\"type\":\"map\",\"values\":\"string\"}}]}";
+
+RestClient restClient = new RestClient("http://localhost:8081");
+SchemaStringParser parser = new SchemaStringParser();
+Schema schema = parser.parse(schemaString);
+int schemaId = restClient.registerSchema(schema, subject);
+```
+
+In this example, we create a new REST client for the schema registry, parse the schema using the Avro library, and register the schema with the schema registry using the REST client. The registerSchema() method returns the ID of the registered schema, which we can use to encode and decode messages.
+
+## [Kafka]
