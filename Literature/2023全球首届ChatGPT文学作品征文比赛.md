@@ -130,6 +130,16 @@ So don't get lost in sorrow and despair,
 Have the courage to embrace a brighter tomorrow, fair and square.
 ```
 
+## Screenshot
+
+![诗歌_a](20230310_01a.png)
+
+![诗歌_b](20230310_01b.png)
+
+![Poem_a](20230310_02a.png)
+
+![Poem_b](20230310_02b.png)
+
 ## Bio
 
 参赛者简介（300字内）、所在城市或地区名称、通信地址、电子邮箱、联系电话。
