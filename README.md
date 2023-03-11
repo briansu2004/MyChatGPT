@@ -10,6 +10,10 @@ My ChatGPT
 
 [ChatGPT coding](ChatGPT_Coding.md)
 
+## ChatGPT literature
+
+[ChatGPT literature](Literature/ChatGPT_Literature.md)
+
 ## IDE integrations (failed)
 
 [ChatGPT IDE integrations](ChatGPT_IDE_integration.md)
