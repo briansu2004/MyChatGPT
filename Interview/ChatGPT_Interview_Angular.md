@@ -521,7 +521,33 @@ Angular also provides other types of providers such as FactoryProvider, ClassPro
 
 Providers are an essential part of dependency injection in Angular, which is used to manage the dependencies between components and services. Providers enable us to create and share instances of services across the application in a modular and scalable way.
 
-## [Angular]52
+## [Angular] Angular APP_BASE_HREF
+
+In Angular, APP_BASE_HREF is a provider token that represents the base URL for the application. The APP_BASE_HREF token is used by the RouterModule to generate the URLs for the application.
+
+The APP_BASE_HREF provider can be defined in the providers array of the app module (app.module.ts). By default, the value of APP_BASE_HREF is /, which means that the application is hosted at the root of the domain.
+
+Here's an example of how to define APP_BASE_HREF in the AppModule:
+
+```typescript
+import { APP_BASE_HREF } from '@angular/common';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [RouterModule.forRoot(routes)],
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/my-app' }
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+In this example, we define a provider for APP_BASE_HREF with the value of '/my-app'. This means that the application is hosted at the /my-app URL instead of the root of the domain.
+
+The APP_BASE_HREF provider is used by the RouterModule to generate URLs for the application. For example, if we define a route with the path '/dashboard', the URL for that route would be '/my-app/dashboard' if the APP_BASE_HREF is set to '/my-app'.
+
+It's important to set the correct value of APP_BASE_HREF when the application is hosted in a subdirectory or when it's served from a different URL than the root of the domain. Setting the wrong value of APP_BASE_HREF can result in broken links and other issues.
 
 ## [Angular] 12
 
