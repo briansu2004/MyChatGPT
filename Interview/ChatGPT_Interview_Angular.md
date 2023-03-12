@@ -549,7 +549,52 @@ The APP_BASE_HREF provider is used by the RouterModule to generate URLs for the 
 
 It's important to set the correct value of APP_BASE_HREF when the application is hosted in a subdirectory or when it's served from a different URL than the root of the domain. Setting the wrong value of APP_BASE_HREF can result in broken links and other issues.
 
-## [Angular] 12
+## [Angular] Angular decorator
+
+In Angular, a decorator is a special type of function that can be attached to a class, property, or method. Decorators are used to modify or extend the behavior of the decorated item at runtime. Angular uses decorators extensively to provide features such as dependency injection, component metadata, and routing.
+
+Decorators are defined using the @ symbol followed by the decorator name. Here's an example of a decorator that logs a message when a method is called:
+
+```typescript
+function log(target: any, name: string, descriptor: PropertyDescriptor) {
+  const original = descriptor.value;
+  descriptor.value = function(...args: any[]) {
+    console.log(`Calling ${name} with arguments: ${JSON.stringify(args)}`);
+    const result = original.apply(this, args);
+    console.log(`Result of ${name}: ${JSON.stringify(result)}`);
+    return result;
+  };
+  return descriptor;
+}
+```
+
+In this example, we define a decorator function called log that takes three arguments: the target object (i.e., the class), the name of the decorated method, and the property descriptor. The decorator replaces the original method with a new method that logs the arguments and return value of the original method.
+
+To apply the log decorator to a method, we can use the decorator syntax:
+
+```typescript
+class MyService {
+  @log
+  getData() {
+    // ...
+  }
+}
+```
+
+In this example, we apply the log decorator to the getData method of the MyService class. When the getData method is called, the decorator logs the arguments and return value of the method.
+
+Angular provides several built-in decorators, including:
+
+```dos
+@Component: Defines the metadata for a component
+@Injectable: Marks a class as an injectable service
+@NgModule: Defines the metadata for a module
+@Input: Marks a property as an input binding for a component
+@Output: Marks a property as an output binding for a component
+```
+
+These decorators are used to provide the core features of Angular, including dependency injection, component composition, and data binding.
+
 
 ## [Angular]521
 
