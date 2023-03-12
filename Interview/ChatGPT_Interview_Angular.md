@@ -281,7 +281,55 @@ export class ParentComponent {
 
 In the above example, we have a parent component called ParentComponent that passes a value to the inputData input property of the ChildComponent using property binding. The value of parentData in the parent component is passed to the inputData input property in the child component.
 
-## [Angular]4
+## [Angular] Angular ng-style
+
+In Angular, ngStyle is a directive that allows you to dynamically set CSS styles on an element based on the state of your component. With ngStyle, you can apply styles based on certain conditions, making your UI more dynamic.
+
+To use ngStyle, you need to bind it to a property in your component that returns an object of CSS styles. For example:
+
+```angular
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-my-component',
+  template: `
+    <div [ngStyle]="{ 'color': textColor, 'background-color': bgColor }">
+      This text has dynamically set styles!
+    </div>
+  `
+})
+export class MyComponent {
+  textColor = 'red';
+  bgColor = 'yellow';
+}
+```
+
+In the above example, we have a component called MyComponent that uses ngStyle to set the color and background-color styles of a div element. The styles are defined in an object that is bound to the ngStyle directive. The textColor and bgColor properties in the component define the values for the styles.
+
+You can also use ngStyle to conditionally apply styles based on the state of your component. For example:
+
+```angular
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-my-component',
+  template: `
+    <div [ngStyle]="{ 'color': isActive ? 'green' : 'red', 'text-decoration': isActive ? 'underline' : 'none' }">
+      This text has dynamically set styles!
+    </div>
+    <button (click)="toggleActive()">Toggle Active</button>
+  `
+})
+export class MyComponent {
+  isActive = false;
+
+  toggleActive() {
+    this.isActive = !this.isActive;
+  }
+}
+```
+
+In the above example, we have a component called MyComponent that uses ngStyle to conditionally apply styles to a div element based on the value of the isActive property. When isActive is true, the text color is green and the text has an underline. When isActive is false, the text color is red and the text has no underline. The toggleActive method is called when a button is clicked and toggles the value of isActive.
 
 ## [Angular]3
 
