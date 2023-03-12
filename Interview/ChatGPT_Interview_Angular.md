@@ -477,7 +477,49 @@ During the application initialization process, Angular will execute the initiali
 
 Using APP_INITIALIZER ensures that the configuration is loaded before the application starts and makes it available to other components and services in the application.
 
-## [Angular] 11
+## [Angular] Angular providers
+
+In Angular, providers is an array of providers that define the dependencies for a component or a module. Providers are used to create and manage instances of services, which are used to share data and functionality across different parts of the application.
+
+A provider can be defined at the component level or at the module level. When a provider is defined at the component level, it is available only to that component and its children. When a provider is defined at the module level, it is available to all components and services that are part of that module.
+
+Providers can be defined in two ways:
+
+Using a class: A provider can be defined as a class that implements an injectable service. The class can have a constructor that specifies the dependencies that the service requires.
+
+```typescript
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  getUsers() {
+    // ...
+  }
+}
+```
+
+In this example, we define a UserService as an injectable service using the @Injectable decorator. We also specify that this service is provided at the root level using the providedIn property. This means that this service is a singleton that is available to the entire application.
+
+Using a value: A provider can be defined as a simple value or object. This is useful when we want to provide a configuration or a constant value to the application.
+
+```typescript
+import { APP_BASE_HREF } from '@angular/common';
+
+@NgModule({
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/my-app' }
+  ]
+})
+export class AppModule { }
+```
+
+In this example, we define a provider for the APP_BASE_HREF token using an object that specifies the useValue property. This value is used by the RouterModule to generate the URLs for the application.
+
+Angular also provides other types of providers such as FactoryProvider, ClassProvider, ExistingProvider, and UseClassProvider, which are used for more complex scenarios.
+
+Providers are an essential part of dependency injection in Angular, which is used to manage the dependencies between components and services. Providers enable us to create and share instances of services across the application in a modular and scalable way.
 
 ## [Angular]52
 
