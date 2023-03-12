@@ -595,6 +595,78 @@ Angular provides several built-in decorators, including:
 
 These decorators are used to provide the core features of Angular, including dependency injection, component composition, and data binding.
 
-## [Angular]521
+## [Angular] Angular NgModule
 
-## [Angular] 121
+In Angular, a module is a container for a cohesive block of code dedicated to a specific purpose, such as organizing components, directives, pipes, and services into a functional unit. Modules help to keep the code organized, reusable, and easy to maintain.
+
+An Angular module is defined using the @NgModule decorator, which takes a metadata object that describes the module's properties, such as imports, declarations, providers, and exports.
+
+Here's an example of a simple Angular module:
+
+```typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MyComponent } from './my.component';
+
+@NgModule({
+  declarations: [MyComponent],
+  imports: [CommonModule],
+  exports: [MyComponent]
+})
+export class MyModule { }
+```
+
+In this example, we define a module called MyModule that declares a component called MyComponent. The module also imports the CommonModule from Angular, which provides common directives and pipes, and exports the MyComponent so that it can be used in other modules.
+
+The @NgModule decorator can take several properties, including:
+
+```dos
+declarations: A list of the components, directives, and pipes that belong to the module.
+imports: A list of the other modules that this module depends on.
+exports: A list of the components, directives, and pipes that can be used by other modules.
+providers: A list of the services that the module provides to the components and directives within the module.
+bootstrap: A list of the components that should be bootstrapped when the application starts.
+```
+
+Angular provides several built-in modules, including:
+
+```dos
+BrowserModule: Provides the browser-specific implementation of the core directives and services.
+FormsModule: Provides the ngModel directive and other forms-related directives and services.
+HttpClientModule: Provides the HttpClient service for making HTTP requests.
+RouterModule: Provides the routing functionality for the application.
+```
+
+By creating and using modules in an Angular application, developers can create a scalable and maintainable architecture for their application.
+
+## [Angular] What does bootstrap mean in Angular?
+
+In Angular, "bootstrap" refers to the process of starting up the application by loading the root module and its components into the browser. When an Angular application is bootstrapped, Angular creates the component hierarchy and renders the application on the page.
+
+The @NgModule decorator has a bootstrap property that allows you to specify which component(s) should be bootstrapped when the application starts up. By default, the AppComponent is bootstrapped.
+
+Here's an example of how to bootstrap an Angular application:
+
+```typescript
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+```
+
+In this example, we import the platformBrowserDynamic function from the @angular/platform-browser-dynamic module and use it to bootstrap the AppModule.
+
+When the application is bootstrapped, Angular creates the root component (in this case, AppComponent) and inserts it into the DOM. Angular then recursively creates and inserts any child components defined in the component's template.
+
+The bootstrap process is important because it allows Angular to start the change detection process and keep the application state in sync with the user interface. Any changes made to the application state are automatically propagated to the UI, and any user events are automatically handled by the application code.
+
+## [Angular] 12134
+
+## [Angular] 121wq2
+
+## [Angular] 1
+
+## [Angular] 12
+
+## [Angular] 121v
