@@ -349,6 +349,136 @@ Inheritance: The constructor is used to call the constructor of the base class w
 
 In summary, the constructor is an important part of Angular because it is used to create an instance of a component or service, inject dependencies, initialize properties, register lifecycle hooks, and call the constructor of the base class.
 
-## [Angular]5
+## [Angular] Angular Dependency injection example
 
-## [Angular] 1
+Sure, here's an example of how to use dependency injection in Angular:
+
+Let's say we have a UserService class that we want to use in a UserComponent:
+
+```typescript
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  getUsers() {
+    // implementation
+  }
+}
+```
+
+In the UserService class, we define a method called getUsers that returns a list of users.
+
+Next, we create a UserComponent that uses the UserService to get a list of users:
+
+```typescript
+import { Component } from '@angular/core';
+import { UserService } from './user.service';
+
+@Component({
+  selector: 'app-user',
+  template: `
+    <ul>
+      <li *ngFor="let user of users">{{ user }}</li>
+    </ul>
+  `
+})
+export class UserComponent {
+  users: string[];
+
+  constructor(private userService: UserService) {
+    this.users = this.userService.getUsers();
+  }
+}
+```
+
+In the UserComponent class, we use the constructor method to inject the UserService using the private keyword. We then call the getUsers method of the UserService to get a list of users and assign it to the users property of the component. Finally, we use the *ngFor directive to display the list of users in the template.
+
+Note that we are using the providedIn: 'root' option in the @Injectable decorator of the UserService class to provide the service at the root level. This means that the same instance of the service will be shared across the entire application. If you want to provide the service at a component level, you can use the providers array in the @Component decorator instead.
+
+In summary, dependency injection in Angular is used to inject dependencies into a component or service. This makes the code more modular, decoupled, and testable.
+
+## [Angular] Angular @Component
+
+In Angular, @Component is a decorator that is used to define a component. It is a function that is applied to the component class and provides metadata about the component to Angular.
+
+The @Component decorator takes an object as its argument, which can contain properties such as:
+
+```dos
+selector: A CSS selector that defines the component's tag name in HTML. This allows the component to be used in templates by its tag name.
+template or templateUrl: The HTML template of the component. It defines the structure of the component and the data bindings used to display and manipulate data.
+style or styleUrls: The CSS styles that are applied to the component.
+inputs: An array of property names that the component accepts as inputs from its parent component.
+outputs: An array of event names that the component emits to its parent component.
+providers: An array of services that are available to the component and its children.
+```
+
+Here's an example of a component defined using the @Component decorator:
+
+```angular
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-example',
+  template: `
+    <h1>{{ title }}</h1>
+    <p>Example component</p>
+  `,
+  styles: [`
+    h1 {
+      color: blue;
+    }
+  `]
+})
+export class ExampleComponent {
+  title = 'Example';
+}
+```
+
+In this example, the @Component decorator is used to define an ExampleComponent. The selector property sets the component's tag name to app-example, and the template property defines the HTML template of the component. The styles property sets the CSS styles for the component. The component class ExampleComponent defines the title property, which is used in the template to display the component's title.
+
+## [Angular] Angular APP_INITIALIZER
+
+In Angular, APP_INITIALIZER is a special token that represents a function that is executed when the application is initialized. It is used to perform some initialization tasks before the application starts.
+
+The APP_INITIALIZER token is used in the providers array of the app module (app.module.ts). The function that is associated with this token is executed during the app initialization process, before any other providers are initialized. The function can be synchronous or asynchronous, and it can return a promise or an observable.
+
+Here's an example of how to use APP_INITIALIZER to perform some initialization tasks:
+
+```typescript
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { ConfigService } from './config.service';
+
+// Initialize the app configuration before the app starts
+export function initializeApp(configService: ConfigService) {
+  return () => configService.loadConfig();
+}
+
+@NgModule({
+  imports: [HttpClientModule],
+  providers: [
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [ConfigService],
+      multi: true
+    }
+  ]
+})
+export class AppModule { }
+```
+
+In this example, we define a ConfigService that is responsible for loading the configuration for the application. We then define a function called initializeApp that takes an instance of the ConfigService and returns a function that loads the configuration. We pass this function to the APP_INITIALIZER provider, along with the ConfigService dependency.
+
+During the application initialization process, Angular will execute the initializeApp function before any other providers are initialized. The initializeApp function will load the configuration using the ConfigService, which can be an asynchronous operation that returns a promise or an observable.
+
+Using APP_INITIALIZER ensures that the configuration is loaded before the application starts and makes it available to other components and services in the application.
+
+## [Angular] 11
+
+## [Angular]52
+
+## [Angular] 12
