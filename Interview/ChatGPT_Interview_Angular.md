@@ -331,7 +331,23 @@ export class MyComponent {
 
 In the above example, we have a component called MyComponent that uses ngStyle to conditionally apply styles to a div element based on the value of the isActive property. When isActive is true, the text color is green and the text has an underline. When isActive is false, the text color is red and the text has no underline. The toggleActive method is called when a button is clicked and toggles the value of isActive.
 
-## [Angular]3
+## [Angular] Why we need a constructor in Angular?
+
+In Angular, a constructor is used to create an instance of a component, directive, or service. It is a special method that gets called when an object of a class is created.
+
+Here are some reasons why we need a constructor in Angular:
+
+```dos
+Dependency injection: The constructor is used to inject dependencies into a component or service. Angular provides a dependency injection system that allows us to declare the dependencies of a component or service in the constructor, and then Angular injects them automatically when an instance is created. This helps to decouple the code and make it more modular and testable.
+
+Initializing properties: The constructor is used to initialize the properties of a component or service. It is often used to set default values or to initialize variables that are needed throughout the component or service.
+
+Lifecycle hooks: The constructor is used to register lifecycle hooks for a component or directive. Lifecycle hooks are methods that get called at specific points during the lifecycle of a component or directive, such as when it is created, destroyed, or updated.
+
+Inheritance: The constructor is used to call the constructor of the base class when a derived class is created. This is necessary to inherit properties and methods from the base class.
+```
+
+In summary, the constructor is an important part of Angular because it is used to create an instance of a component or service, inject dependencies, initialize properties, register lifecycle hooks, and call the constructor of the base class.
 
 ## [Angular]5
 
