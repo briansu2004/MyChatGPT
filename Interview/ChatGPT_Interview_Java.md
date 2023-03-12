@@ -104,8 +104,64 @@ In this example, we have defined an embeddable class Address with street, city, 
 
 By using the @Embeddable and @Embedded annotations, we can group related fields together and create a more organized and modular code structure. Additionally, this allows us to avoid having to create separate tables for every field, which can improve the performance of our application.
 
-## [Java] 3
+## [Java] Java annotation @Entity
 
-## [Java] 21
+In Java, the @Entity annotation is used to mark a class as an entity or a table in a relational database.
+
+When a class is marked with the @Entity annotation, it becomes a persistent class, meaning that instances of the class can be saved to and retrieved from a database. The entity class typically corresponds to a table in the database, with the class fields corresponding to the columns of the table.
+
+Here's an example of how the @Entity annotation can be used in a Java class definition:
+
+```java
+@Entity
+public class Customer {
+    @Id
+    private Long id;
+    
+    private String firstName;
+    private String lastName;
+    
+    // getters and setters
+}
+```
+
+In this example, the Customer class is marked with the @Entity annotation to indicate that it is an entity class. The @Id annotation is also used to indicate that the id field is the primary key of the corresponding table in the database.
+
+With this annotation, the class can be used with an ORM (Object-Relational Mapping) framework such as Hibernate to interact with the database without having to write SQL queries directly.
+
+## [Java] Java annotation @Column
+
+In Java, the @Column annotation is used to specify the mapping between a Java class field and a database table column when using Object Relational Mapping (ORM) tools such as Hibernate or Java Persistence API (JPA).
+
+This annotation can be used to customize the name, length, precision, and other properties of the corresponding database column. Here's an example of using the @Column annotation:
+
+```java
+@Entity
+@Table(name = "person")
+public class Person {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @Column(name = "first_name", nullable = false, length = 50)
+  private String firstName;
+
+  @Column(name = "last_name", nullable = false, length = 50)
+  private String lastName;
+
+  // constructor, getters, and setters
+}
+```
+
+In this example, the @Column annotation is used to specify that the firstName and lastName fields of the Person class should be mapped to the first_name and last_name columns of the person table in the database. Additionally, the nullable attribute is set to false to indicate that these columns cannot be null, and the length attribute is set to 50 to specify the maximum length of these columns.
+
+Overall, the @Column annotation is a powerful tool that allows developers to fine-tune the mapping between Java objects and database tables.
 
 ## [Java] 31
+
+## [Java] 3
+
+## [Java] 321
+
+## [Java] 3122
