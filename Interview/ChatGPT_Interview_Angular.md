@@ -243,7 +243,43 @@ ngOnDestroy: This hook is called just before a component is destroyed. It is a g
 
 By using these lifecycle hooks, you can execute custom logic at various stages of a component's or directive's lifecycle, which can be useful for a wide range of use cases, such as managing state, handling events, and performing initialization and cleanup tasks.
 
-## [Angular]2
+## [Angular] Angular @Input
+
+In Angular, @Input() is a decorator that is used to define an input property for a component. An input property is a way to pass data from a parent component to a child component.
+
+To use @Input(), you need to import it from the @angular/core module and add it before the input property you want to define. For example:
+
+```angular
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `<p>{{ inputData }}</p>`
+})
+export class ChildComponent {
+  @Input() inputData: string;
+}
+```
+
+In the above example, we have defined a child component called ChildComponent with an input property called inputData. The @Input() decorator is used to mark inputData as an input property.
+
+To use this input property in the parent component, you need to bind it to a property in the parent component. For example:
+
+```angular
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template: `
+    <app-child [inputData]="parentData"></app-child>
+  `
+})
+export class ParentComponent {
+  parentData = 'This is the data passed from the parent component.';
+}
+```
+
+In the above example, we have a parent component called ParentComponent that passes a value to the inputData input property of the ChildComponent using property binding. The value of parentData in the parent component is passed to the inputData input property in the child component.
 
 ## [Angular]4
 
