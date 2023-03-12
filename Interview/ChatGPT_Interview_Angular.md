@@ -51,7 +51,7 @@ I hope these questions help you conduct a successful mock interview for an Angul
 - How do you implement lazy loading in Angular?
 - What are ng-content and ng-container in Angular and how are they used?
 
-## [Angular] 15
+## [Angular] 15 Angular interview questions
 
 Questions
 
@@ -141,7 +141,7 @@ zone.js in Angular is a library that helps in managing asynchronous operations i
 ngZone in Angular is a service that provides a way to execute code outside the Angular zone. This is useful for improving application performance and avoiding unnecessary change detection cycles.
 ```
 
-## [Angular] 5
+## [Angular] 5 Angular interview questions
 
 Questions
 
