@@ -595,7 +595,6 @@ Angular provides several built-in decorators, including:
 
 These decorators are used to provide the core features of Angular, including dependency injection, component composition, and data binding.
 
-
 ## [Angular]521
 
 ## [Angular] 121
