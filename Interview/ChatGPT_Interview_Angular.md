@@ -731,7 +731,48 @@ Import/export: Components are typically defined within a module and can be expor
 
 In summary, components and modules are both important building blocks of Angular applications, but they serve different purposes. Components define the UI and behavior of a specific part of the application, while modules provide a way to organize related components and other artifacts into a cohesive unit that can be easily maintained and reused across the application.
 
-## [Angular] 12
+## [Angular] Angular pipe
+
+In Angular, a pipe is a feature that allows you to transform data in your templates before it is rendered to the user. Pipes can be used to format dates, numbers, strings, and other types of data in a variety of ways.
+
+Pipes are defined using the @Pipe decorator and can be used in template expressions using the pipe operator (|). The basic syntax for using a pipe in a template expression is as follows:
+
+```html
+{{ value | pipeName:param1:param2... }}
+```
+
+Here, value is the data to be transformed, pipeName is the name of the pipe, and param1, param2, etc. are any additional parameters that the pipe may require.
+
+Angular comes with several built-in pipes, including:
+
+date: Formats a date according to a specified format.
+decimal: Formats a number as a decimal according to a specified precision.
+currency: Formats a number as a currency value according to a specified currency code and format.
+percent: Formats a number as a percentage value.
+You can also create your own custom pipes by defining a TypeScript class that implements the PipeTransform interface and has a transform() method that takes the input value and any optional parameters and returns the transformed output. For example, here's a simple custom pipe that formats a string as all uppercase:
+
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'uppercase'
+})
+export class UppercasePipe implements PipeTransform {
+  transform(value: string): string {
+    return value.toUpperCase();
+  }
+}
+```
+
+To use this pipe in a template expression, you would write:
+
+```html
+{{ 'hello world' | uppercase }}
+```
+
+This would output "HELLO WORLD".
+
+In summary, pipes are a powerful feature of Angular that allow you to transform data in your templates before it is rendered to the user. You can use built-in pipes or create your own custom pipes to format dates, numbers, strings, and other types of data in a variety of ways.
 
 ## [Angular] 121v
 
