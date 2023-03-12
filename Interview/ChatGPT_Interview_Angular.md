@@ -661,9 +661,59 @@ When the application is bootstrapped, Angular creates the root component (in thi
 
 The bootstrap process is important because it allows Angular to start the change detection process and keep the application state in sync with the user interface. Any changes made to the application state are automatically propagated to the UI, and any user events are automatically handled by the application code.
 
-## [Angular] 12134
+## [Angular] What is @angular/platform-browser-dynamic
 
-## [Angular] 121wq2
+@angular/platform-browser-dynamic is a module in Angular that provides a platform for dynamically compiling and bootstrapping an Angular application in a browser environment. It is used to build applications that are compiled and executed in the client-side browser, rather than on the server.
+
+This module provides the platformBrowserDynamic() function, which returns a PlatformRef instance that can be used to bootstrap an Angular module at runtime. The PlatformRef is responsible for creating and managing the application's component tree, providing services and dependencies to the components, and handling change detection and rendering.
+
+Here's an example of how to use @angular/platform-browser-dynamic to bootstrap an Angular application:
+
+```typescript
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+```
+
+In this example, we import the platformBrowserDynamic function from the @angular/platform-browser-dynamic module and use it to bootstrap the AppModule. The bootstrapModule method returns a Promise that resolves to the NgModuleRef for the bootstrapped module.
+
+By using @angular/platform-browser-dynamic, developers can create dynamic, client-side applications that can be executed in the browser environment. This module is a key part of the Angular platform and is used extensively in Angular applications.
+
+## [Angular] Angular promise
+
+In Angular, a Promise is a built-in JavaScript object that represents a value that may not be available yet but will be resolved at some point in the future. Promises are commonly used in asynchronous programming to handle operations that may take some time to complete, such as making HTTP requests or reading from a file.
+
+Angular uses Promise objects extensively in its APIs to handle asynchronous operations, such as the HttpClient service for making HTTP requests or the resolve method of the ActivatedRoute in the routing module.
+
+Here's an example of how to use a Promise in Angular to make an HTTP request:
+
+```typescript
+import { HttpClient } from '@angular/common/http';
+
+export class MyService {
+  constructor(private http: HttpClient) { }
+
+  getData(): Promise<any> {
+    return this.http.get('/api/data').toPromise();
+  }
+}
+```
+
+In this example, we define a service called MyService that uses the HttpClient service to make an HTTP GET request to the /api/data endpoint. The get method returns a Observable object, but we can use the toPromise method to convert it to a Promise.
+
+The getData method returns the Promise object, which can be used to handle the asynchronous response from the server. We can use the then method to handle the successful response and the catch method to handle any errors.
+
+```typescript
+myService.getData()
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+In this example, we call the getData method on the myService instance and use the then and catch methods to handle the successful and error responses, respectively.
+
+By using Promise objects in Angular, developers can write clean and concise code that handles asynchronous operations in a simple and intuitive way.
 
 ## [Angular] 1
 
