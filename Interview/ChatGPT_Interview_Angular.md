@@ -715,8 +715,26 @@ In this example, we call the getData method on the myService instance and use th
 
 By using Promise objects in Angular, developers can write clean and concise code that handles asynchronous operations in a simple and intuitive way.
 
-## [Angular] 1
+## [Angular] Angular component vs module
+
+In Angular, a component is a building block of the user interface that defines a part of the application's functionality and UI behavior. It consists of a TypeScript class that contains the logic for the component's behavior and an HTML template that defines the component's view.
+
+On the other hand, a module is a logical collection of related components, directives, pipes, and services that are used to organize an Angular application into cohesive blocks of functionality. A module can contain one or more components and other types of Angular artifacts.
+
+The main differences between components and modules are as follows:
+
+Scope: Components define the behavior and UI of a single part of an application, while modules provide a way to organize related components, services, and other artifacts into a cohesive unit.
+
+Purpose: Components are used to build the UI and define the behavior of a specific part of the application, while modules are used to organize the application into functional units that can be easily maintained and reused.
+
+Import/export: Components are typically defined within a module and can be exported to be used in other modules, while modules can be imported into other modules to provide access to their components, services, and other artifacts.
+
+In summary, components and modules are both important building blocks of Angular applications, but they serve different purposes. Components define the UI and behavior of a specific part of the application, while modules provide a way to organize related components and other artifacts into a cohesive unit that can be easily maintained and reused across the application.
 
 ## [Angular] 12
 
 ## [Angular] 121v
+
+## [Angular] 1254
+
+## [Angular] 1
