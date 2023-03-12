@@ -218,3 +218,37 @@ ng add [package-name] - adds a new package to the project, such as a third-party
 ```
 
 These are some of the most commonly used ng commands, but there are many others available as well. You can get a full list of available commands by running ng help or ng --help.
+
+## [Angular] Angular lifecycle
+
+Angular has a number of lifecycle hooks that allow you to tap into various stages of a component or directive's lifecycle, and execute custom logic at those stages. Here are the most commonly used Angular lifecycle hooks in the order they are called:
+
+```dos
+ngOnChanges: This hook is called when the input properties of a component change. It receives a SimpleChanges object that contains information about each changed property.
+
+ngOnInit: This hook is called once, after the first ngOnChanges call, when the component is initialized. It is a good place to perform initialization logic.
+
+ngDoCheck: This hook is called every time Angular checks for changes. It is a good place to perform custom change detection logic.
+
+ngAfterContentInit: This hook is called after Angular projects external content into a component's view. It is a good place to perform initialization logic that relies on external content.
+
+ngAfterContentChecked: This hook is called every time Angular checks for changes in the content projected into a component. It is a good place to perform custom change detection logic on that content.
+
+ngAfterViewInit: This hook is called after Angular initializes a component's view and child views. It is a good place to perform initialization logic that relies on the component's view and child views.
+
+ngAfterViewChecked: This hook is called every time Angular checks for changes in a component's view and child views. It is a good place to perform custom change detection logic on that view.
+
+ngOnDestroy: This hook is called just before a component is destroyed. It is a good place to perform any cleanup logic, such as unsubscribing from observables or clearing timers.
+```
+
+By using these lifecycle hooks, you can execute custom logic at various stages of a component's or directive's lifecycle, which can be useful for a wide range of use cases, such as managing state, handling events, and performing initialization and cleanup tasks.
+
+## [Angular]2
+
+## [Angular]4
+
+## [Angular]3
+
+## [Angular]5
+
+## [Angular] 1
