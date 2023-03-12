@@ -68,6 +68,44 @@ Other options for the TemporalType parameter include TemporalType.DATE and Tempo
 
 By using the @Temporal annotation, we can ensure that the Java date or time object is stored in the database in the correct format and can be retrieved and manipulated correctly by our application.
 
-## [Java] 2
+## [Java] @Embeddable
+
+@Embeddable is a JPA (Java Persistence API) annotation that is used to indicate that a class is an embeddable class. An embeddable class is a class whose instances are stored as part of the state of an entity, rather than as a separate entity in their own right. Embeddable classes are commonly used to group related fields together and to improve the organization and readability of the code.
+
+To define an embeddable class, you must annotate it with the @Embeddable annotation. The class can then be used as a field in an entity class by annotating the field with the @Embedded annotation. The embedded class is mapped to the database table columns of the parent entity.
+
+For example, consider a case where we have a JPA entity named "Employee" that has an Address field which is an embeddable class:
+
+```java
+@Entity
+public class Employee {
+    @Id
+    private Long id;
+    private String name;
+    
+    @Embedded
+    private Address address;
+    
+    // getters and setters
+}
+
+@Embeddable
+public class Address {
+    private String street;
+    private String city;
+    private String state;
+    private String zipCode;
+    
+    // getters and setters
+}
+```
+
+In this example, we have defined an embeddable class Address with street, city, state, and zipCode fields. The Employee entity has an Address field annotated with the @Embedded annotation. This indicates that the Address object should be stored as part of the Employee object in the same table.
+
+By using the @Embeddable and @Embedded annotations, we can group related fields together and create a more organized and modular code structure. Additionally, this allows us to avoid having to create separate tables for every field, which can improve the performance of our application.
 
 ## [Java] 3
+
+## [Java] 21
+
+## [Java] 31
