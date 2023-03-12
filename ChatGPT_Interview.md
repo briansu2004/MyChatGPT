@@ -1,6 +1,8 @@
 # Interview with ChatGPT
 
-[Java](Interview/ChatGPT_Interview_JavaCore.md)
+[Java Core](Interview/ChatGPT_Interview_JavaCore.md)
+
+[Java](Interview/ChatGPT_Interview_Java.md)
 
 [Coding](Interview/ChatGPT_Interview_Coding.md)
 
