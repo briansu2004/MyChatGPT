@@ -23,3 +23,23 @@ What are some security concerns associated with JSP development?
 ```
 
 These are just a few examples of the types of questions you may be asked in a JSP interview. It's important to have a good understanding of JSP and its related technologies, as well as how to use them to create dynamic and secure web pages.
+
+## [JSP] What is JSP and how does it work?
+
+JSP stands for JavaServer Pages, and it is a server-side technology used to create dynamic web pages in Java. JSP pages are essentially HTML pages with additional tags that can be used to insert dynamic content into the page.
+
+JSP pages are processed by a web container or application server, such as Apache Tomcat, which compiles the JSP code into a servlet and then executes it. When a user requests a JSP page, the server compiles the JSP into a Java servlet, which generates the HTML content dynamically based on the user's request.
+
+JSP allows developers to write Java code directly in their HTML pages using special tags, such as <% %> and <%= %>, which can be used to insert Java code into the page. JSP also includes JSP expressions, which are used to insert the value of a Java expression directly into the HTML output, and JSP declarations, which are used to declare variables and methods for use within the JSP page.
+
+JSP pages can also include custom tags, which can be used to perform specific functions or access Java objects. These custom tags can be defined by the developer or can be provided by third-party libraries.
+
+Overall, JSP provides a powerful and flexible way to create dynamic web pages using Java code and HTML markup, and it is a key technology used in many Java web applications.
+
+## [JSP] 1
+
+## [JSP] 2
+
+## [JSP] 3
+
+## [JSP] 4

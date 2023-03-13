@@ -24,3 +24,4 @@
 
 [Bootstrap](Interview/ChatGPT_Interview_Bootstrap.md)
 
+[JSP](Interview/ChatGPT_Interview_JSP.md)
