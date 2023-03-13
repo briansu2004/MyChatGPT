@@ -67,8 +67,34 @@ Tag Library: The Struts Tag Library is a set of custom tags that can be used in 
 
 Overall, these core components work together to provide a well-defined structure and clear separation of concerns, which makes it easier to build and maintain web applications using the Struts framework.
 
-## [Struts] 2
+## [Struts] What is the difference between Struts 1 and Struts 2?
+
+Struts 1 and Struts 2 are both Java-based web application frameworks that follow the Model-View-Controller (MVC) architectural pattern. However, there are several differences between the two:
+
+```dos
+Architecture: Struts 1 follows a traditional MVC architecture, where the Controller is represented by the ActionServlet and the Model and View are represented by ActionForms and JSP pages, respectively. Struts 2, on the other hand, uses a more modern and flexible architecture that allows for more granular control over the MVC components.
+
+Configuration: Struts 1 uses an XML-based configuration file to define the mapping between incoming requests and the appropriate Action classes. Struts 2, on the other hand, uses an annotation-based configuration model that is more flexible and easier to use.
+
+Interceptors: Struts 2 introduces the concept of Interceptors, which are pluggable components that can be used to perform pre and post-processing tasks. This makes it easier to implement cross-cutting concerns such as logging, security, and validation.
+
+Ajax Support: Struts 2 has built-in support for Ajax, which allows developers to create more responsive and dynamic user interfaces.
+
+Expression Language: Struts 2 supports a powerful Expression Language (EL) that makes it easier to access and manipulate data in the View.
+
+Dependency Injection: Struts 2 provides built-in support for Dependency Injection (DI) through the use of popular DI frameworks such as Spring and Guice.
+```
+
+Overall, Struts 2 is a more modern and flexible framework that builds on the strengths of Struts 1 while addressing some of its limitations. It provides a more powerful and extensible architecture, better support for Ajax and dynamic user interfaces, and more convenient configuration and dependency injection options.
 
 ## [Struts] 3
 
 ## [Struts] 4
+
+## [Struts] 32
+
+## [Struts] 42
+
+## [Struts] 34
+
+## [Struts] 44
