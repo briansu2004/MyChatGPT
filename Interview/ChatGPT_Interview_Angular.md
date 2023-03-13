@@ -844,4 +844,10 @@ These are the typical steps for creating a new Angular application. However, dep
 
 ## [Angular] 1254
 
-## [Angular] 1
+## [Angular] 12222
+
+## [Angular] 12
+
+## [Angular] 125422
+
+## [Angular] 13

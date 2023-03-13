@@ -158,7 +158,25 @@ In this example, the @Column annotation is used to specify that the firstName an
 
 Overall, the @Column annotation is a powerful tool that allows developers to fine-tune the mapping between Java objects and database tables.
 
-## [Java] 31
+## [Java] What are the typical steps for a new java spring boot app?
+
+Here are the typical steps for creating a new Java Spring Boot application:
+
+```dos
+Set up your development environment: Before you start creating a new Spring Boot application, you need to set up your development environment. This involves installing Java, Maven or Gradle, and an Integrated Development Environment (IDE) such as Eclipse or IntelliJ IDEA.
+
+Create a new Spring Boot project: You can create a new Spring Boot project using the Spring Initializr web interface or the command-line interface. The Spring Initializr allows you to select the required dependencies and generate a project with a pre-configured structure.
+
+Add required dependencies: Once you have created the project, you may need to add additional dependencies required for your specific project. This can be done in the pom.xml or build.gradle file.
+
+Write code: With the project set up and dependencies added, you can start writing code for your application. The code typically includes the main class, controllers, services, and repositories.
+
+Run the application: Once you have written your code, you can run your Spring Boot application to ensure that everything is working as expected. This can be done from the command line or from within your IDE.
+
+Package the application: Once you have verified that your application is working as expected, you can package it as a JAR or WAR file. This can be done using the Maven or Gradle build tool.
+
+Deploy the application: Finally, you can deploy your application to a production environment such as a server or a cloud-based platform like AWS or Google Cloud.
+```
 
 ## [Java] 3
 
