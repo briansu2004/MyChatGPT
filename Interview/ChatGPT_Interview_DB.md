@@ -42,6 +42,46 @@ Data manipulation: MQL also provides operators to manipulate data in the databas
 
 Overall, MongoDB Query Language provides a powerful and flexible way to retrieve, filter, and manipulate data in MongoDB databases. Its rich set of operators and features make it a popular choice for developers working with MongoDB.
 
+## [DB] Cassandra Query Language
+
+Cassandra Query Language (CQL) is a query language used to interact with the Cassandra NoSQL database. CQL is designed to provide a familiar SQL-like syntax while also supporting the features and functionality of Cassandra's distributed architecture. Some of the key features of CQL include:
+
+```dos
+Data Modeling: CQL supports data modeling using the CQL CREATE KEYSPACE and CREATE TABLE statements, which allow users to define the structure of their data and the way it will be stored in Cassandra.
+
+Querying and Filtering: CQL provides a set of SELECT, INSERT, UPDATE, and DELETE statements to query and filter data based on specific criteria.
+
+Data Aggregation: CQL supports data aggregation using the GROUP BY and aggregate functions such as SUM, COUNT, AVG, MIN, and MAX.
+
+Secondary Indexing: CQL supports the creation of secondary indexes on one or more fields of a table to optimize query performance.
+
+Transactions: CQL supports lightweight transactions (LWT) to ensure data consistency in distributed environments.
+
+User-Defined Functions: CQL allows users to define their own functions to perform custom data manipulation and aggregation.
+```
+
+Overall, CQL provides a powerful and flexible way to interact with Cassandra databases. Its SQL-like syntax makes it familiar to users who are already familiar with SQL, while its support for distributed architectures and other features makes it a popular choice for large-scale, high-performance applications.
+
+## [DB] SQL vs MongoDB Query Language
+
+SQL (Structured Query Language) and MongoDB Query Language (MQL) are both query languages used to interact with databases, but they differ in their underlying data models and syntax. Here are some differences between SQL and MQL:
+
+```dos
+Data model: SQL is based on the relational data model, where data is stored in tables with predefined schemas and relationships are established through foreign keys. MQL, on the other hand, is based on the document data model, where data is stored as documents with flexible schemas and relationships are established through embedded documents or references.
+
+Syntax: SQL uses a standardized syntax based on a set of predefined keywords and clauses, while MQL has a more flexible syntax that allows for more complex queries and data manipulation.
+
+Scalability: SQL databases are vertically scalable, which means they can handle increasing loads by adding more processing power and memory to the existing system. MongoDB databases, on the other hand, are horizontally scalable, which means they can handle increasing loads by adding more nodes to the existing system.
+
+Performance: SQL databases are optimized for complex queries and can handle large volumes of structured data, but they may not perform as well with unstructured data or large-scale data processing. MongoDB databases are optimized for fast read and write operations on large volumes of unstructured or semi-structured data.
+
+Data consistency: SQL databases provide strong data consistency, which means all data is consistent and up-to-date at all times. MongoDB databases, on the other hand, sacrifice some consistency for scalability, which means there may be eventual consistency or eventual data loss.
+
+Use cases: SQL databases are suitable for applications that require high data consistency and transactional integrity, such as financial applications or inventory management systems. MongoDB databases are suitable for applications that require high scalability and flexibility, such as social media or IoT applications.
+```
+
+In conclusion, SQL and MongoDB Query Language have different strengths and weaknesses, and the choice between the two depends on the specific needs of the application. SQL is better suited for structured data, complex queries, and transactional applications, while MongoDB is better suited for unstructured or semi-structured data, fast read and write operations, and highly scalable applications.
+
 ## [DB] 1
 
 ## [DB] 2
