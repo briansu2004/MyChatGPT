@@ -946,7 +946,23 @@ Maintenance: This stage involves monitoring your application for issues, fixing 
 
 Throughout the lifecycle of your Angular application, you will need to use various tools and technologies, including the Angular CLI, Git, and various testing frameworks. It's important to follow best practices and industry standards to ensure that your application is robust, reliable, and scalable.
 
-## [Angular] 125422
+## [Angular] Angular guard
+
+Angular guards are used to protect routes in an Angular application. They are used to control access to certain routes based on certain criteria. A guard can be used to restrict access to a route if the user is not authenticated, does not have the correct role, or if some other condition is not met.
+
+There are several types of guards available in Angular:
+
+```dos
+CanActivate: This guard is used to determine if a user is allowed to activate a particular route. It can be used to restrict access to certain routes if the user is not authenticated or does not have the correct role.
+
+CanActivateChild: This guard is similar to CanActivate, but it is used to determine if a user is allowed to activate the child routes of a particular route.
+
+CanDeactivate: This guard is used to determine if a user is allowed to leave a particular route. It can be used to prevent the user from navigating away from a page if there is unsaved data.
+
+CanLoad: This guard is used to determine if a user is allowed to load a particular module. It can be used to restrict access to certain modules if the user is not authenticated or does not have the correct role.
+```
+
+To use a guard in your Angular application, you can create a guard service and implement one of the guard interfaces mentioned above. Then you can add the guard to the route configuration in your app-routing.module.ts file.
 
 ## [Angular] 13
 
