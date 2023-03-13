@@ -340,6 +340,42 @@ The logout action maps to the com.example.LogoutAction Java class, and has one p
 
 Note that this is just a simple example, and there are many more configuration options available in Struts 2. The struts.xml file is the main configuration file for a Struts 2 application, and it defines how the framework should handle requests, map actions to Java classes, and render responses to the user.
 
+## [Struts] What are the advantages and disadvantages of using Struts?
+
+Struts is an open-source framework used for building web applications in Java. It provides developers with a set of tools and conventions for building web applications based on the Model-View-Controller (MVC) architecture. Here are some advantages and disadvantages of using Struts:
+
+Advantages:
+
+```dos
+Reusability: Struts provides a set of pre-built components, which can be reused to create new applications quickly. This saves development time and effort.
+
+MVC Architecture: Struts is based on the Model-View-Controller (MVC) architecture, which separates the presentation, data, and control logic of an application. This helps developers to build applications that are easy to maintain and modify.
+
+Extensibility: Struts can be easily extended by developers to include custom functionality, such as custom tags, validators, and filters.
+
+Integration with other technologies: Struts integrates easily with other Java technologies, such as JavaServer Pages (JSP), JavaBeans, and JavaServer Faces (JSF).
+
+Community Support: Struts has a large and active community of developers, who contribute to the development of the framework and provide support to other developers.
+```
+
+Disadvantages:
+
+```dos
+Steep learning curve: Struts has a steep learning curve, and developers need to be familiar with Java and MVC architecture to use it effectively.
+
+Complexity: Struts can be complex to set up and configure, which can be a challenge for developers who are new to the framework.
+
+Limited functionality: Struts provides limited functionality compared to other Java web frameworks, such as Spring and Hibernate.
+
+Lack of flexibility: Struts enforces a strict structure and workflow, which may limit the flexibility of developers in building web applications.
+
+Maintenance: Struts has been around for many years, and older versions of the framework may require maintenance and updates to keep up with the latest technologies and security requirements.
+```
+
+## [Struts] 3412
+
+## [Struts] 441
+
 ## [Struts] 44
 
 ## [Struts] 3412
