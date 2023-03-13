@@ -2,7 +2,7 @@
 
 [Java Core](Interview/ChatGPT_Interview_JavaCore.md)
 
-[Java](Interview/ChatGPT_Interview_Java.md)
+[Java](Interview/ChatGPT_Interview_JavaSpring.md)
 
 [Coding](Interview/ChatGPT_Interview_Coding.md)
 

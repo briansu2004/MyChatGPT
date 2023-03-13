@@ -1,4 +1,4 @@
-# Interview with ChatGPT - Java Core
+# Interview with ChatGPT - Java Spring / Spring Boot
 
 ## [Java] @NamedQuery
 
