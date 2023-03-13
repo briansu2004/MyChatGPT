@@ -276,7 +276,25 @@ Add custom annotations and tags: You can add custom annotations and tags to your
 
 Zipkin provides a powerful tool for troubleshooting latency issues in microservices-based architectures. By following these steps, you can quickly set up Zipkin and start capturing and analyzing trace data for your microservices.
 
-## [Microservice] 312
+## [Microservice] How to use Jaeger?
+
+Jaeger is a distributed tracing system that helps you monitor and troubleshoot microservices-based architectures. It provides a way to track requests as they propagate through your distributed system, showing the time taken by each service to process the request. Here are the general steps to use Jaeger:
+
+```dos
+Install and run Jaeger server: You can download and run the Jaeger server locally or in a cloud environment. You can also run Jaeger server using Docker.
+
+Add Jaeger instrumentation to your microservices: You need to add Jaeger instrumentation to your microservices to capture trace data. This involves adding a Jaeger client library to your microservices, such as the OpenTracing Jaeger library.
+
+Configure Jaeger client libraries: You need to configure the Jaeger client libraries to connect to the Jaeger server. You can do this by setting environment variables or adding configuration files to your microservices.
+
+Generate trace data: Once your microservices are instrumented and configured, you can start generating trace data by sending requests to your microservices. Jaeger will capture the trace data and store it in its backend storage.
+
+Analyze trace data: You can view the trace data in the Jaeger UI, which provides a timeline view of the request and response for each service in the distributed system. You can use the UI to identify performance bottlenecks and troubleshoot latency issues.
+
+Add custom annotations and tags: You can add custom annotations and tags to your trace data to provide additional context and information about the request. This can help you identify specific issues and trends in your distributed system.
+```
+
+Jaeger provides a powerful tool for monitoring and troubleshooting microservices-based architectures. By following these steps, you can quickly set up Jaeger and start capturing and analyzing trace data for your microservices.
 
 ## [Microservice] 43
 
