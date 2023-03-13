@@ -1,6 +1,6 @@
 # Coding with ChatGPT - PostgreSQL
 
-## [PostgreSQL] lowercase
+## [PostgreSQL] Lowercase
 
 ```dos
 In my postgreSQL, I create a new table like this
