@@ -19,3 +19,5 @@
 [DB / SQL etc.](Interview/ChatGPT_Interview_DB.md)
 
 [Behavior](Interview/ChatGPT_Interview_Behavior.md)
+
+[Struts](Interview/ChatGPT_Interview_Struts.md)
