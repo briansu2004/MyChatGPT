@@ -43,7 +43,29 @@ Validation: Struts includes built-in support for validating user input, which he
 
 Overall, Struts provides a robust framework for building scalable and maintainable web applications. It provides a well-defined structure and clear separation of concerns, which makes it easier to maintain and extend the application over time.
 
-## [Struts] 1
+## [Struts] What are the core components of the Struts framework?
+
+The core components of the Struts framework are as follows:
+
+```dos
+Action: The Action is a Java class that is responsible for processing user requests and returning an appropriate response. It handles user input, interacts with the business logic, and populates data into the View.
+
+ActionForm: The ActionForm is a JavaBean that acts as a container for user input data. It encapsulates the form data and provides getter and setter methods for accessing the data.
+
+ActionMapping: The ActionMapping is a configuration file that maps incoming requests to the appropriate Action classes. It defines the URL pattern, the Action class to invoke, and the View to display the response.
+
+ActionServlet: The ActionServlet is the central controller of the Struts framework. It receives incoming requests, processes them, and delegates the processing to the appropriate Action class.
+
+Struts Configuration File: The Struts configuration file is an XML file that defines the global properties and settings for the application. It contains information about the Action mappings, form beans, and plug-ins.
+
+View: The View is responsible for presenting the processed data to the user. Struts supports different types of Views, such as JSP pages and Velocity templates.
+
+Interceptors: Interceptors are pluggable components that can be used to perform pre and post-processing tasks. They can be used for tasks such as logging, security checks, and error handling.
+
+Tag Library: The Struts Tag Library is a set of custom tags that can be used in JSP pages to simplify the presentation of data. These tags provide a consistent look and feel across the application.
+```
+
+Overall, these core components work together to provide a well-defined structure and clear separation of concerns, which makes it easier to build and maintain web applications using the Struts framework.
 
 ## [Struts] 2
 
