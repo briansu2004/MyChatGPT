@@ -107,6 +107,34 @@ Exception Handling: If an exception occurs during request processing, Struts pro
 
 Overall, Struts provides a well-defined structure and clear separation of concerns, which makes it easier to handle requests and responses in a consistent and maintainable manner. The ActionServlet acts as the central controller and delegates the processing to the appropriate Action classes and Views.
 
+## [Struts] What is the role of the Action class in Struts?
+
+The Action class in Struts is an important component of the Struts framework. It plays a central role in processing user requests and generating responses.
+
+When a user sends a request to a Struts-based application, the request is first intercepted by a front controller called the ActionServlet. The ActionServlet is responsible for processing the request and determining which Action class should be used to handle the request.
+
+The Action class is a Java class that contains the business logic for processing the user request. It typically implements the Action interface and overrides its execute() method. In the execute() method, the Action class typically retrieves data from the request, performs any necessary processing or manipulation of the data, and returns a result code that determines which view should be displayed to the user.
+
+The Action class may also interact with other components of the Struts framework, such as form beans, validation rules, and message resources, to provide a consistent and well-structured approach to application development.
+
+Overall, the Action class is a critical component of the Struts framework that enables developers to build robust and maintainable web applications.
+
+## [Struts] What is the Struts configuration file and what is its purpose?
+
+The Struts configuration file is an XML file that contains the configuration settings for a Struts-based web application. Its purpose is to provide a mapping between the request URL and the corresponding action to be taken by the application. The configuration file defines the following components:
+
+```dos
+Action Mapping: It maps the request URL to the corresponding action class that should be invoked.
+
+Form Beans: These are the JavaBeans that correspond to the HTML forms used in the application. They define the properties of the form and their corresponding validation rules.
+
+Forward and Include Configurations: They define the navigation rules for the application. They specify the target page or action to be executed after the current request has been processed.
+
+Exception Handling: It defines how the application handles exceptions that occur during the processing of a request.
+```
+
+The Struts configuration file is typically named struts-config.xml, and it is located in the WEB-INF directory of the web application. It is read by the Struts framework during the initialization of the application and used to configure the necessary components.
+
 ## [Struts] How do you handle form data in Struts?
 
 In Struts, form data can be handled using the ActionForm class. Here's a step-by-step guide on how to handle form data in Struts:
@@ -224,34 +252,6 @@ Lack of flexibility: Struts enforces a strict structure and workflow, which may 
 
 Maintenance: Struts has been around for many years, and older versions of the framework may require maintenance and updates to keep up with the latest technologies and security requirements.
 ```
-
-## [Struts] What is the role of the Action class in Struts?
-
-The Action class in Struts is an important component of the Struts framework. It plays a central role in processing user requests and generating responses.
-
-When a user sends a request to a Struts-based application, the request is first intercepted by a front controller called the ActionServlet. The ActionServlet is responsible for processing the request and determining which Action class should be used to handle the request.
-
-The Action class is a Java class that contains the business logic for processing the user request. It typically implements the Action interface and overrides its execute() method. In the execute() method, the Action class typically retrieves data from the request, performs any necessary processing or manipulation of the data, and returns a result code that determines which view should be displayed to the user.
-
-The Action class may also interact with other components of the Struts framework, such as form beans, validation rules, and message resources, to provide a consistent and well-structured approach to application development.
-
-Overall, the Action class is a critical component of the Struts framework that enables developers to build robust and maintainable web applications.
-
-## [Struts] What is the Struts configuration file and what is its purpose?
-
-The Struts configuration file is an XML file that contains the configuration settings for a Struts-based web application. Its purpose is to provide a mapping between the request URL and the corresponding action to be taken by the application. The configuration file defines the following components:
-
-```dos
-Action Mapping: It maps the request URL to the corresponding action class that should be invoked.
-
-Form Beans: These are the JavaBeans that correspond to the HTML forms used in the application. They define the properties of the form and their corresponding validation rules.
-
-Forward and Include Configurations: They define the navigation rules for the application. They specify the target page or action to be executed after the current request has been processed.
-
-Exception Handling: It defines how the application handles exceptions that occur during the processing of a request.
-```
-
-The Struts configuration file is typically named struts-config.xml, and it is located in the WEB-INF directory of the web application. It is read by the Struts framework during the initialization of the application and used to configure the necessary components.
 
 ## [Struts] Struts 2 example
 
