@@ -193,76 +193,6 @@ When the form is submitted, the Struts framework will automatically create an in
 
 Overall, this approach provides a convenient way to handle form data in Struts, and it allows you to easily map form data to Java objects, and validate the input data before processing it.
 
-## [Struts] What is SUCCESS in struts 2 app?
-
-In Struts 2, "SUCCESS" is a string constant that represents a successful result. It is commonly used as a return value from the execute() method in an Action class to indicate that the action was successfully executed.
-
-When an action is executed, it may generate a result that needs to be displayed to the user. The result can be a JSP page, a Velocity template, or any other type of content that can be rendered by Struts 2. Each result is associated with a unique string name, which can be used to reference the result in the struts.xml configuration file.
-
-By convention, the string "SUCCESS" is used to represent a successful result. When an action method returns the string "SUCCESS", the Struts 2 framework looks for a result configuration with the name "success" in the struts.xml file, and uses that result to render the response to the user.
-
-For example, consider the following struts.xml configuration:
-
-```xml
-<action name="login" class="com.example.LoginAction">
-    <result name="success">/welcome.jsp</result>
-    <result name="error">/login.jsp</result>
-</action>
-```
-
-If the execute() method in the LoginAction class returns the string "SUCCESS", Struts 2 will render the /welcome.jsp page. If it returns the string "ERROR", Struts 2 will render the /login.jsp page.
-
-Overall, using "SUCCESS" as the return value for a successful action method is a common convention in Struts 2, but it is not required. You can use any string value to represent a successful result, as long as you configure the corresponding result in the struts.xml file.
-
-## [Struts] struts.xml example
-
-Here's an example struts.xml configuration file for a simple Struts 2 application:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE struts PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
-        "http://struts.apache.org/dtds/struts-2.5.dtd">
-
-<struts>
-
-    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-
-    <package name="default" namespace="/" extends="struts-default">
-
-        <action name="login" class="com.example.LoginAction">
-            <result name="success">/welcome.jsp</result>
-            <result name="input">/login.jsp</result>
-        </action>
-
-        <action name="logout" class="com.example.LogoutAction">
-            <result name="success">/index.jsp</result>
-        </action>
-
-    </package>
-
-</struts>
-```
-
-Let's go over each part of this configuration file:
-
-The <!DOCTYPE> declaration specifies the DTD (Document Type Definition) for the struts.xml file. In this case, it refers to the DTD for Struts 2.5.
-
-The <struts> element is the root element of the configuration file.
-
-The <constant> element specifies a constant that will be used by the Struts 2 framework. In this case, it disables the Dynamic Method Invocation feature, which is not recommended for production use.
-
-The <package> element defines a package for the application. The name attribute specifies the name of the package, and the namespace attribute specifies the URL namespace for the package. The extends attribute specifies that this package extends the struts-default package, which provides default configuration settings.
-
-The <action> element defines an action for the package. The name attribute specifies the name of the action, and the class attribute specifies the Java class that implements the action. The result elements define the results that can be returned by the action, and specify the JSP pages that should be rendered for each result.
-
-In this example, the login action maps to the com.example.LoginAction Java class, and has two possible results: "success" and "input". If the action is successful, the /welcome.jsp page will be rendered. If there are validation errors, the /login.jsp page will be rendered.
-
-The logout action maps to the com.example.LogoutAction Java class, and has one possible result: "success". If the action is successful, the /index.jsp page will be rendered.
-
-Note that this is just a simple example, and there are many more configuration options available in Struts 2. The struts.xml file is the main configuration file for a Struts 2 application, and it defines how the framework should handle requests, map actions to Java classes, and render responses to the user.
-
 ## [Struts] What are the advantages and disadvantages of using Struts?
 
 Struts is an open-source framework used for building web applications in Java. It provides developers with a set of tools and conventions for building web applications based on the Model-View-Controller (MVC) architecture. Here are some advantages and disadvantages of using Struts:
@@ -489,6 +419,76 @@ This file defines a Struts 2 package that contains an action named "login". The 
 When the user submits the login form, the ActionServlet intercepts the request and maps it to the "login" action defined in the configuration file. The LoginAction class is then instantiated and its execute() method is called. If the login is successful, the "success" result is returned and the user is redirected to the "success.jsp" page. If the login fails, the "error" result is returned and the user is redirected back to the "login.jsp" page, where an error message is displayed.
 
 Note that this is just a simple example, and in real-world applications, you would typically use more complex validation logic, database interactions, and other features provided by the Struts 2 framework.
+
+## [Struts] What is SUCCESS in struts 2 app?
+
+In Struts 2, "SUCCESS" is a string constant that represents a successful result. It is commonly used as a return value from the execute() method in an Action class to indicate that the action was successfully executed.
+
+When an action is executed, it may generate a result that needs to be displayed to the user. The result can be a JSP page, a Velocity template, or any other type of content that can be rendered by Struts 2. Each result is associated with a unique string name, which can be used to reference the result in the struts.xml configuration file.
+
+By convention, the string "SUCCESS" is used to represent a successful result. When an action method returns the string "SUCCESS", the Struts 2 framework looks for a result configuration with the name "success" in the struts.xml file, and uses that result to render the response to the user.
+
+For example, consider the following struts.xml configuration:
+
+```xml
+<action name="login" class="com.example.LoginAction">
+    <result name="success">/welcome.jsp</result>
+    <result name="error">/login.jsp</result>
+</action>
+```
+
+If the execute() method in the LoginAction class returns the string "SUCCESS", Struts 2 will render the /welcome.jsp page. If it returns the string "ERROR", Struts 2 will render the /login.jsp page.
+
+Overall, using "SUCCESS" as the return value for a successful action method is a common convention in Struts 2, but it is not required. You can use any string value to represent a successful result, as long as you configure the corresponding result in the struts.xml file.
+
+## [Struts] struts.xml example
+
+Here's an example struts.xml configuration file for a simple Struts 2 application:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
+    <package name="default" namespace="/" extends="struts-default">
+
+        <action name="login" class="com.example.LoginAction">
+            <result name="success">/welcome.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+
+        <action name="logout" class="com.example.LogoutAction">
+            <result name="success">/index.jsp</result>
+        </action>
+
+    </package>
+
+</struts>
+```
+
+Let's go over each part of this configuration file:
+
+The <!DOCTYPE> declaration specifies the DTD (Document Type Definition) for the struts.xml file. In this case, it refers to the DTD for Struts 2.5.
+
+The <struts> element is the root element of the configuration file.
+
+The <constant> element specifies a constant that will be used by the Struts 2 framework. In this case, it disables the Dynamic Method Invocation feature, which is not recommended for production use.
+
+The <package> element defines a package for the application. The name attribute specifies the name of the package, and the namespace attribute specifies the URL namespace for the package. The extends attribute specifies that this package extends the struts-default package, which provides default configuration settings.
+
+The <action> element defines an action for the package. The name attribute specifies the name of the action, and the class attribute specifies the Java class that implements the action. The result elements define the results that can be returned by the action, and specify the JSP pages that should be rendered for each result.
+
+In this example, the login action maps to the com.example.LoginAction Java class, and has two possible results: "success" and "input". If the action is successful, the /welcome.jsp page will be rendered. If there are validation errors, the /login.jsp page will be rendered.
+
+The logout action maps to the com.example.LogoutAction Java class, and has one possible result: "success". If the action is successful, the /index.jsp page will be rendered.
+
+Note that this is just a simple example, and there are many more configuration options available in Struts 2. The struts.xml file is the main configuration file for a Struts 2 application, and it defines how the framework should handle requests, map actions to Java classes, and render responses to the user.
 
 ## [Struts] 3412
 
