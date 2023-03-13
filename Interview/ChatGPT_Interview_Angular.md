@@ -774,7 +774,55 @@ This would output "HELLO WORLD".
 
 In summary, pipes are a powerful feature of Angular that allow you to transform data in your templates before it is rendered to the user. You can use built-in pipes or create your own custom pipes to format dates, numbers, strings, and other types of data in a variety of ways.
 
-## [Angular] 121v
+## [Angular] Angular router
+
+In Angular, the router is a built-in service that enables navigation between different views in an application. It allows users to navigate to different routes, which are represented by URLs, and load the appropriate components for each route.
+
+The router works by defining a set of routes in the application's routing module, which maps URL patterns to component classes. When a user navigates to a specific URL, the router matches the URL to a route and loads the corresponding component, rendering it in the application's main view.
+
+Here's an example of how to use the router in an Angular application:
+
+```typescript
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home.component';
+import { AboutComponent } from './about.component';
+import { ContactComponent } from './contact.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+In this example, we define a set of routes in the AppRoutingModule module that maps the empty URL to the HomeComponent, the /about URL to the AboutComponent, and the /contact URL to the ContactComponent.
+
+The RouterModule.forRoot(routes) method configures the router with the set of routes defined in the routes array, and the AppRoutingModule module exports the RouterModule so that it can be used in other parts of the application.
+
+To use the router in a component, we can use the routerLink directive to navigate to a specific route:
+
+```html
+<nav>
+  <a routerLink="/">Home</a>
+  <a routerLink="/about">About</a>
+  <a routerLink="/contact">Contact</a>
+</nav>
+```
+
+In this example, we define a navigation bar that uses the routerLink directive to navigate to the HomeComponent, AboutComponent, and ContactComponent routes, respectively.
+
+The router is a powerful and flexible tool that enables developers to create complex, multi-page applications with ease. It provides a simple and intuitive way to manage application state and navigation, making it a key part of the Angular platform.
+
+## [Angular] 1254
+
+## [Angular] 1
 
 ## [Angular] 1254
 
