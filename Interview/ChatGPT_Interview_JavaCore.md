@@ -70,7 +70,6 @@ Encapsulation in Java is a mechanism that allows the data and behavior of an obj
 
 The importance of encapsulation in Java can be understood through the following points:
 
-```bash
 Data hiding: Encapsulation helps in hiding the implementation details of a class from the outside world, which ensures that the data is not accessible to unauthorized users. This helps in maintaining the integrity of the data and prevents it from being corrupted or misused.
 
 Access control: Encapsulation enables the class designer to control the level of access to the class members by defining appropriate access modifiers. This helps in preventing unauthorized access to the class members and ensures that the class is used in a safe and secure manner.
@@ -78,7 +77,6 @@ Access control: Encapsulation enables the class designer to control the level of
 Maintainability: Encapsulation facilitates easy maintenance of the code by enabling changes to be made to the implementation of a class without affecting the code that uses the class. This helps in reducing the impact of changes and ensures that the code is easy to maintain and evolve over time.
 
 Reusability: Encapsulation promotes reusability by enabling the class to be used in different contexts without affecting its internal implementation. This helps in reducing code duplication and ensures that the code is easy to reuse and extend.
-```
 
 In summary, encapsulation is an important concept in Java that helps in promoting data hiding, access control, maintainability, and reusability of code. It is a fundamental principle of object-oriented programming and is widely used in the design and implementation of software systems.
 
