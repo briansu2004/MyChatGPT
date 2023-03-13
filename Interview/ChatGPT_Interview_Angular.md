@@ -905,10 +905,51 @@ describe('Login', () => {
 Run the end-to-end test: To run the test, use the command: ng e2e. This will start the application and run the end-to-end test in a real browser. The test results will be displayed in the console.
 By default, Angular CLI generates a sample end-to-end test file that you can modify to suit your application's needs. Writing end-to-end tests is an important part of building a robust and reliable Angular application, so it's important to invest time in learning and implementing end-to-end testing practices.
 
-## [Angular] 12222
+## [Angular] My Angular app has many console.log statements. How do I remove or disable them when I deploy to production?
 
-## [Angular] 12
+You should remove all console.log statements from your code before deploying to production. This is because console.log statements can impact the performance of your application and expose sensitive information to end-users.
+
+To remove console.log statements from your code, you can use a build tool like webpack or rollup that supports tree shaking. Tree shaking is a technique that removes unused code from your application during the build process. This means that any console.log statements that are not used in your application will be automatically removed from the final build.
+
+You can also use a plugin like babel-plugin-transform-remove-console to remove all console.log statements from your code. This plugin removes all console.log statements from your code during the build process, so they will not appear in the final build.
+
+Here's how you can configure the plugin in your Angular project:
+
+Install the plugin: npm install --save-dev babel-plugin-transform-remove-console
+
+Add the plugin to your .babelrc file:
+
+```json
+{
+  "plugins": ["transform-remove-console"]
+}
+```
+
+Build your application for production: ng build --prod
+This will remove all console.log statements from your code during the build process, so they will not appear in the final build.
+
+## [Angular] What is the lifecycle for an angular app development?
+
+The lifecycle of an Angular app development can be broken down into several stages:
+
+```dos
+Planning: This stage involves defining the scope of your application, identifying user requirements, and creating a project plan. You may also need to decide on the architecture and design of your application during this stage.
+
+Development: This stage involves building the application using Angular, HTML, CSS, and TypeScript. You will need to create components, services, and modules that will make up your application. You may also need to use external libraries and APIs to add additional functionality to your application.
+
+Testing: This stage involves writing and running tests to ensure that your application is functioning correctly. You will need to write unit tests, integration tests, and end-to-end tests to test your application's functionality and performance.
+
+Deployment: This stage involves deploying your application to a server or hosting provider. You may need to configure your application for production, set up a database, and perform other tasks to prepare your application for deployment.
+
+Maintenance: This stage involves monitoring your application for issues, fixing bugs, and adding new features. You may need to perform regular updates and maintenance to keep your application up-to-date and secure.
+```
+
+Throughout the lifecycle of your Angular application, you will need to use various tools and technologies, including the Angular CLI, Git, and various testing frameworks. It's important to follow best practices and industry standards to ensure that your application is robust, reliable, and scalable.
 
 ## [Angular] 125422
 
 ## [Angular] 13
+
+## [Angular] 1
+
+## [Angular] 2
