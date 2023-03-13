@@ -820,7 +820,25 @@ In this example, we define a navigation bar that uses the routerLink directive t
 
 The router is a powerful and flexible tool that enables developers to create complex, multi-page applications with ease. It provides a simple and intuitive way to manage application state and navigation, making it a key part of the Angular platform.
 
-## [Angular] 1254
+## [Angular] What are the typical steps for a new angular app?
+
+Here are the typical steps to create a new Angular application:
+
+```dos
+Install Angular CLI: Install the Angular Command Line Interface (CLI) globally using the following command: npm install -g @angular/cli.
+
+Create a new Angular project: Once Angular CLI is installed, create a new Angular project by running the following command: ng new my-app. This will create a new Angular project with the name "my-app" in the current directory.
+
+Run the Angular application: Navigate to the newly created project directory by running cd my-app, and start the application by running the command: ng serve. This will compile the application and open it in a web browser at <http://localhost:4200>.
+
+Create Angular components: Angular components are the building blocks of an Angular application. To create a new component, use the following command: ng generate component component-name. This will generate a new component with the name "component-name".
+
+Add Angular routing: Angular routing enables navigation between different views of an application. To add routing, run the command ng generate module app-routing --flat --module=app. This will generate a new routing module that you can modify to define your application's routes.
+
+Build and deploy the Angular application: Once the application is ready for production, you can build it by running the command ng build --prod. This will create a production-ready version of the application that you can deploy to a web server.
+```
+
+These are the typical steps for creating a new Angular application. However, depending on the specific requirements of your application, you may need to modify or add additional steps.
 
 ## [Angular] 1
 
