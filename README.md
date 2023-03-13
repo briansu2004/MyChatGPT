@@ -14,6 +14,10 @@ My ChatGPT
 
 [ChatGPT literature](Literature/ChatGPT_Literature.md)
 
+## ChatGPT ideas
+
+[ChatGPT ideas](Idea/ChatGPT_Idea.md)
+
 ## IDE integrations (failed)
 
 [ChatGPT IDE integrations](ChatGPT_IDE_integration.md)
