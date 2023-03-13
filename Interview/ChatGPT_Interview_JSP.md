@@ -74,9 +74,35 @@ Overall, JSP is a powerful technology for web development that provides a wide r
 
 ## [JSP] 4
 
-## [JSP] 31
+## [JSP] How do you handle exceptions in JSP?
 
-## [JSP] 41
+In JSP (JavaServer Pages), exceptions can occur during the execution of a JSP page due to various reasons such as database connectivity issues, file not found errors, and so on. Handling exceptions properly is crucial to ensure that the JSP page can recover from errors and provide a user-friendly error message. Here are the steps to handle exceptions in JSP:
+
+Use the try-catch block: Wrap the code that may throw an exception in a try-catch block to catch the exception. In the catch block, you can handle the exception by logging it or displaying an error message to the user.
+
+Use the isErrorPage attribute: If you want to use the same error-handling code across multiple JSP pages, you can create a dedicated error page and set the isErrorPage attribute to "true" in the page directive of the error page. This attribute tells the JSP container that the page is an error page and allows you to use the exception implicit object in the page to access information about the exception that occurred.
+
+Use the error-page directive: You can also use the error-page directive in the web.xml file to specify a custom error page for a specific error code or exception type. For example, you can specify that all 404 errors should be handled by a specific JSP page.
+
+Display a user-friendly error message: When handling exceptions, it's important to display a user-friendly error message that explains what went wrong and how to fix it. You can use JSP tags such as <c:if> and <c:choose> to conditionally display error messages based on the type of exception that occurred.
+
+Overall, handling exceptions properly in JSP is important to ensure that your application is robust and user-friendly. By using try-catch blocks, the isErrorPage attribute, the error-page directive, and user-friendly error messages, you can make sure that your JSP pages can recover from errors and provide a good user experience.
+
+## [JSP] How do you use JSP custom tags?
+
+Custom tags in JSP (JavaServer Pages) allow developers to create their own custom tag libraries, which can be used to simplify complex JSP pages, enhance code reuse, and encapsulate custom functionality. Here's a brief overview of how to use JSP custom tags:
+
+Create a tag library descriptor (TLD) file: The first step is to create a TLD file, which defines the custom tag library and its tags. The TLD file is an XML file that includes information such as the tag library URI, prefix, and tag definitions.
+
+Implement the custom tags: Next, implement the custom tags as Java classes that extend from the TagSupport or BodyTagSupport classes, depending on whether the tag generates output or not. The Java classes should override the doStartTag() or doEndTag() methods to define the tag behavior.
+
+Package the tag library: Once the custom tags are implemented, package them into a JAR file along with the TLD file.
+
+Declare the tag library in JSP pages: In JSP pages that use the custom tags, declare the tag library using the taglib directive, which specifies the tag library URI and prefix.
+
+Use the custom tags in JSP pages: Finally, use the custom tags in JSP pages by referencing them using the prefix and tag name defined in the TLD file. For example, if the TLD file defines a tag with the name "hello", you can use it in a JSP page like this: <my:hello name="John"/>
+
+Overall, custom tags can greatly enhance the functionality and maintainability of JSP pages, by allowing developers to encapsulate complex logic and functionality into reusable components.
 
 ## [JSP] What is the lifecycle of a JSP page?
 
