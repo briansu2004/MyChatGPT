@@ -66,3 +66,30 @@ Answer: CSS preprocessors are tools that extend the functionality of CSS by addi
 
 How do you optimize CSS for performance?
 Answer: To optimize CSS for performance, you can minimize the number of HTTP requests, reduce the size of CSS files, use media queries to load styles only when they are needed, and avoid using inline styles. You can also use CSS frameworks and preprocessors to reduce the amount of CSS code that needs to be written.
+
+## [CSS] [SCSS] SCSS interview questions
+
+Here are some SCSS (Sass) interview questions that you may encounter:
+
+```dos
+What is SCSS, and why is it used?
+SCSS (Sass) is a CSS preprocessor that adds additional functionality to traditional CSS. It allows developers to write more concise and maintainable code by using variables, mixins, and other advanced features.
+What is the difference between SCSS and Sass?
+Sass is a syntax for writing CSS, while SCSS is a newer syntax that is more similar to traditional CSS. SCSS uses curly braces and semicolons like CSS, while Sass uses indentation and doesn't require semicolons.
+What are variables in SCSS, and how are they used?
+Variables are used to store and reuse values such as colors, font sizes, and spacing. They are defined using the $ symbol and can be used throughout your SCSS code.
+What are mixins in SCSS, and how are they used?
+Mixins are a way to define reusable chunks of code that can be included in multiple styles. They are defined using the @mixin keyword and can be used to apply a group of styles to an element.
+What is nesting in SCSS, and how is it used?
+Nesting is a way to write CSS selectors inside other selectors to create more specific styles. It can help make your SCSS code more organized and easier to read.
+What is inheritance in SCSS, and how is it used?
+Inheritance is a way to apply the styles of one selector to another selector. It can help reduce code duplication and make your SCSS code more efficient.
+What are functions in SCSS, and how are they used?
+Functions are used to perform calculations and transformations on values in your SCSS code. They can be used to create more dynamic and flexible styles.
+What is the SCSS @import rule, and how is it used?
+The @import rule is used to include other SCSS files in your code. It can help you organize your code into smaller, more manageable files.
+What is the difference between SCSS and CSS specificity?
+SCSS uses nesting and inheritance to create more specific CSS selectors, while CSS specificity relies on the order and specificity of the selector itself.
+What are SCSS maps, and how are they used?
+SCSS maps are used to store related values such as color schemes or font families. They can be used to simplify your code and make it more maintainable.
+```
