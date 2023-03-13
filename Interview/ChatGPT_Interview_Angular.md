@@ -1047,8 +1047,47 @@ handleButtonClick() {
 Respond to the event: In the event handler method, you can write code to respond to the event. For example, you might update a variable, call a function, or navigate to a different page.
 Overall, event binding is a powerful tool in Angular that allows you to create dynamic and interactive web applications. By listening for user events and responding to them, you can create a rich user experience that engages your users and keeps them coming back.
 
-## [Angular] 13
+## [Angular] Angular directive
+
+In Angular, a directive is a class that adds behavior to an existing DOM element or component. Directives allow you to extend the functionality of HTML and create reusable code that can be applied to different elements and components.
+
+There are three types of directives in Angular:
+
+Component Directives: These are directives that create reusable UI components that can be used in different parts of the application. Components are a type of directive that can be inserted into the DOM and interact with other components and directives.
+
+Structural Directives: These are directives that change the structure of the DOM by adding, removing, or manipulating elements. Examples of structural directives in Angular include *ngIf,*ngFor, and *ngSwitch.
+
+Attribute Directives: These are directives that modify the behavior or appearance of an element by manipulating its attributes. Examples of attribute directives in Angular include ngClass, ngStyle, and ngModel.
+
+Here's an example of how to create a custom attribute directive in Angular:
+
+```typescript
+import { Directive, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '[myHighlight]'
+})
+export class HighlightDirective {
+  constructor(el: ElementRef) {
+    el.nativeElement.style.backgroundColor = 'yellow';
+  }
+}
+```
+
+In this example, we create a custom attribute directive called HighlightDirective that changes the background color of an element to yellow. We use the @Directive decorator to specify that this is a directive and provide a selector that matches the attribute we want to apply this directive to (in this case, [myHighlight]).
+
+We then inject the ElementRef service into the constructor of the directive, which provides access to the underlying DOM element that the directive is attached to. We use this to set the backgroundColor style property of the element to yellow.
+
+To use this directive in our template, we simply add the myHighlight attribute to an element:
+
+`<p myHighlight>Highlight me!</p>`
+
+This will apply the HighlightDirective to the p element, changing its background color to yellow.
 
 ## [Angular] 1
 
 ## [Angular] 2
+
+## [Angular] 11
+
+## [Angular] 21
