@@ -964,6 +964,45 @@ CanLoad: This guard is used to determine if a user is allowed to load a particul
 
 To use a guard in your Angular application, you can create a guard service and implement one of the guard interfaces mentioned above. Then you can add the guard to the route configuration in your app-routing.module.ts file.
 
+## [Angular] Angular data binding
+
+Angular data binding is a powerful feature that allows you to connect your application's data model to your user interface. There are three types of data binding in Angular:
+
+Interpolation: This type of data binding allows you to display the value of a property or expression in your template. To use interpolation, simply surround the property or expression with double curly braces ({{ }}).
+
+Property binding: This type of data binding allows you to set the value of a property on a DOM element. To use property binding, use square brackets ([ ]) to surround the property name.
+
+Event binding: This type of data binding allows you to respond to user events such as clicks, keystrokes, and mouse movements. To use event binding, use parentheses (()) to surround the event name and the name of the method that should be called when the event is triggered.
+
+Here's an example of how data binding works in Angular:
+
+```angular
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-example',
+  template: `
+    <h1>{{title}}</h1>
+    <input [value]="inputValue" (input)="onInputChange($event.target.value)">
+    <p>You entered: {{inputValue}}</p>
+  `
+})
+export class ExampleComponent {
+  title = 'Data Binding Example';
+  inputValue = '';
+
+  onInputChange(value: string) {
+    this.inputValue = value;
+  }
+}
+```
+
+In this example, we have an ExampleComponent with a title property and an inputValue property. The title property is displayed using interpolation in an h1 tag. The inputValue property is bound to the value attribute of an input element using property binding. The inputValue property is also displayed using interpolation in a p tag. When the user types into the input, the onInputChange method is called using event binding. This method updates the inputValue property, which causes the value displayed in the p tag to be updated as well.
+
+## [Angular] 1
+
+## [Angular] 2
+
 ## [Angular] 13
 
 ## [Angular] 1
