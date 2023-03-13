@@ -67,6 +67,12 @@ Answer: CSS preprocessors are tools that extend the functionality of CSS by addi
 How do you optimize CSS for performance?
 Answer: To optimize CSS for performance, you can minimize the number of HTTP requests, reduce the size of CSS files, use media queries to load styles only when they are needed, and avoid using inline styles. You can also use CSS frameworks and preprocessors to reduce the amount of CSS code that needs to be written.
 
+## [CSS] SASS and SCSS
+
+Sass: syntactically awesome style sheets
+
+SCSS: Sass Cascading Style Sheet
+
 ## [CSS] [SCSS] SCSS interview questions
 
 Here are some SCSS (Sass) interview questions that you may encounter:
