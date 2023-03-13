@@ -107,83 +107,6 @@ Exception Handling: If an exception occurs during request processing, Struts pro
 
 Overall, Struts provides a well-defined structure and clear separation of concerns, which makes it easier to handle requests and responses in a consistent and maintainable manner. The ActionServlet acts as the central controller and delegates the processing to the appropriate Action classes and Views.
 
-## [Struts] Struts 2 example
-
-Here's an example of a simple Struts 2 application that displays a "Hello, World!" message when a user submits a form:
-
-Create a new Maven project in your IDE, and add the Struts 2 dependency to your pom.xml file:
-
-```xml
-<dependency>
-    <groupId>org.apache.struts</groupId>
-    <artifactId>struts2-core</artifactId>
-    <version>2.5.26</version>
-</dependency>
-```
-
-Create a new Java class named HelloWorldAction that extends ActionSupport. This class will handle the user request and return the response:
-
-```java
-package com.example.struts2;
-
-import com.opensymphony.xwork2.ActionSupport;
-
-public class HelloWorldAction extends ActionSupport {
-
-    private String message;
-
-    public String execute() {
-        message = "Hello, World!";
-        return SUCCESS;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-}
-```
-
-Create a new JSP file named hello.jsp that displays the message returned by the action:
-
-```jsp
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Hello, Struts 2!</title>
-</head>
-<body>
-    <h1>${message}</h1>
-</body>
-</html>
-```
-
-Create a new Struts configuration file named struts.xml in the src/main/resources directory. This file defines the mapping between the incoming request and the HelloWorldAction class:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
-    "http://struts.apache.org/dtds/struts-2.5.dtd">
-
-<struts>
-    <package name="default" namespace="/" extends="struts-default">
-        <action name="hello" class="com.example.struts2.HelloWorldAction">
-            <result name="success">/hello.jsp</result>
-        </action>
-    </package>
-</struts>
-```
-
-Run the application by deploying it to a web server, and navigate to the following URL in your web browser:
-
-```bash
-http://localhost:8080/yourapp/hello.action
-```
-
-This should display the "Hello, World!" message in your web browser.
-
-Overall, this example demonstrates how to create a simple Struts 2 application that handles user requests and returns a response using an Action class and a JSP View. The Struts configuration file maps the incoming request to the appropriate Action class and View.
-
 ## [Struts] How do you handle form data in Struts?
 
 In Struts, form data can be handled using the ActionForm class. Here's a step-by-step guide on how to handle form data in Struts:
@@ -372,11 +295,200 @@ Lack of flexibility: Struts enforces a strict structure and workflow, which may 
 Maintenance: Struts has been around for many years, and older versions of the framework may require maintenance and updates to keep up with the latest technologies and security requirements.
 ```
 
-## [Struts] 3412
+## [Struts] What is the role of the Action class in Struts?
 
-## [Struts] 441
+The Action class in Struts is an important component of the Struts framework. It plays a central role in processing user requests and generating responses.
 
-## [Struts] 44
+When a user sends a request to a Struts-based application, the request is first intercepted by a front controller called the ActionServlet. The ActionServlet is responsible for processing the request and determining which Action class should be used to handle the request.
+
+The Action class is a Java class that contains the business logic for processing the user request. It typically implements the Action interface and overrides its execute() method. In the execute() method, the Action class typically retrieves data from the request, performs any necessary processing or manipulation of the data, and returns a result code that determines which view should be displayed to the user.
+
+The Action class may also interact with other components of the Struts framework, such as form beans, validation rules, and message resources, to provide a consistent and well-structured approach to application development.
+
+Overall, the Action class is a critical component of the Struts framework that enables developers to build robust and maintainable web applications.
+
+## [Struts] What is the Struts configuration file and what is its purpose?
+
+The Struts configuration file is an XML file that contains the configuration settings for a Struts-based web application. Its purpose is to provide a mapping between the request URL and the corresponding action to be taken by the application. The configuration file defines the following components:
+
+```dos
+Action Mapping: It maps the request URL to the corresponding action class that should be invoked.
+
+Form Beans: These are the JavaBeans that correspond to the HTML forms used in the application. They define the properties of the form and their corresponding validation rules.
+
+Forward and Include Configurations: They define the navigation rules for the application. They specify the target page or action to be executed after the current request has been processed.
+
+Exception Handling: It defines how the application handles exceptions that occur during the processing of a request.
+```
+
+The Struts configuration file is typically named struts-config.xml, and it is located in the WEB-INF directory of the web application. It is read by the Struts framework during the initialization of the application and used to configure the necessary components.
+
+## [Struts] Struts 2 example
+
+Here's an example of a simple Struts 2 application that displays a "Hello, World!" message when a user submits a form:
+
+Create a new Maven project in your IDE, and add the Struts 2 dependency to your pom.xml file:
+
+```xml
+<dependency>
+    <groupId>org.apache.struts</groupId>
+    <artifactId>struts2-core</artifactId>
+    <version>2.5.26</version>
+</dependency>
+```
+
+Create a new Java class named HelloWorldAction that extends ActionSupport. This class will handle the user request and return the response:
+
+```java
+package com.example.struts2;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class HelloWorldAction extends ActionSupport {
+
+    private String message;
+
+    public String execute() {
+        message = "Hello, World!";
+        return SUCCESS;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+}
+```
+
+Create a new JSP file named hello.jsp that displays the message returned by the action:
+
+```jsp
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Hello, Struts 2!</title>
+</head>
+<body>
+    <h1>${message}</h1>
+</body>
+</html>
+```
+
+Create a new Struts configuration file named struts.xml in the src/main/resources directory. This file defines the mapping between the incoming request and the HelloWorldAction class:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="hello" class="com.example.struts2.HelloWorldAction">
+            <result name="success">/hello.jsp</result>
+        </action>
+    </package>
+</struts>
+```
+
+Run the application by deploying it to a web server, and navigate to the following URL in your web browser:
+
+```bash
+http://localhost:8080/yourapp/hello.action
+```
+
+This should display the "Hello, World!" message in your web browser.
+
+Overall, this example demonstrates how to create a simple Struts 2 application that handles user requests and returns a response using an Action class and a JSP View. The Struts configuration file maps the incoming request to the appropriate Action class and View.
+
+## [Struts] Struts 2 example (2nd)
+
+Sure! Here is a simple Struts 2 example that demonstrates how to create a simple login form and handle its submission using Struts 2 framework:
+
+First, create a JSP file named "login.jsp" in the web application's "WebContent" directory:
+
+```jsp
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
+<html>
+<head>
+<title>Login Page</title>
+</head>
+<body>
+<h2>Login Page</h2>
+<s:form action="login">
+<s:textfield name="username" label="Username"/>
+<s:password name="password" label="Password"/>
+<s:submit value="Login"/>
+</s:form>
+</body>
+</html>
+```
+
+This JSP file contains a Struts 2 form that prompts the user for a username and password.
+
+Next, create a Struts 2 action class named "LoginAction" in the "src" directory:
+
+```java
+package com.example.actions;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class LoginAction extends ActionSupport {
+
+   private String username;
+   private String password;
+
+   public String getUsername() {
+      return username;
+   }
+
+   public void setUsername(String username) {
+      this.username = username;
+   }
+
+   public String getPassword() {
+      return password;
+   }
+
+   public void setPassword(String password) {
+      this.password = password;
+   }
+
+   public String execute() {
+      if (username.equals("admin") && password.equals("admin123")) {
+         return SUCCESS;
+      } else {
+         addActionError("Invalid username or password!");
+         return ERROR;
+      }
+   }
+}
+```
+
+This class extends the ActionSupport class and defines two properties for the username and password fields. The execute() method checks whether the username and password match a hardcoded value and returns either SUCCESS or ERROR depending on the result. If the login fails, an error message is added using the addActionError() method.
+
+Finally, create a Struts 2 configuration file named "struts.xml" in the "WebContent/WEB-INF" directory:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+   "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+   <package name="default" extends="struts-default">
+      <action name="login" class="com.example.actions.LoginAction">
+         <result name="success">/success.jsp</result>
+         <result name="error">/login.jsp</result>
+      </action>
+   </package>
+</struts>
+```
+
+This file defines a Struts 2 package that contains an action named "login". The action is mapped to the LoginAction class and specifies two result codes, "success" and "error", which correspond to the two possible outcomes of the login attempt.
+
+When the user submits the login form, the ActionServlet intercepts the request and maps it to the "login" action defined in the configuration file. The LoginAction class is then instantiated and its execute() method is called. If the login is successful, the "success" result is returned and the user is redirected to the "success.jsp" page. If the login fails, the "error" result is returned and the user is redirected back to the "login.jsp" page, where an error message is displayed.
+
+Note that this is just a simple example, and in real-world applications, you would typically use more complex validation logic, database interactions, and other features provided by the Struts 2 framework.
 
 ## [Struts] 3412
 
