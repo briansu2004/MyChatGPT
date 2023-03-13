@@ -253,6 +253,64 @@ Lack of flexibility: Struts enforces a strict structure and workflow, which may 
 Maintenance: Struts has been around for many years, and older versions of the framework may require maintenance and updates to keep up with the latest technologies and security requirements.
 ```
 
+## [Struts] How do you validate user input in Struts?
+
+Struts provides several ways to validate user input in a web application. One of the most common methods is to use validation rules defined in the Struts configuration file (struts-config.xml), which specify the validation rules for each form bean. Here are the basic steps for validating user input in Struts:
+
+```dos
+Define a form bean in the struts-config.xml file: The form bean defines the properties of the form and their corresponding validation rules.
+
+Create an action class that handles the form submission: The action class implements the Action interface and is responsible for processing the user input.
+
+Define the validation rules for the form bean: The validation rules are specified in the struts-config.xml file using the <form-validation> element. You can use predefined validation rules, such as required fields or email format, or you can create custom validation rules.
+
+Associate the validation rules with the form bean: The validation rules are associated with the form bean using the <form-bean> element in the struts-config.xml file.
+
+Implement the validation logic in the action class: The action class should implement the validate() method, which is called by the framework before the execute() method. This method performs additional validation logic not covered by the XML validation rules.
+
+Display validation errors: If there are any validation errors, the framework automatically associates them with the form bean and returns control to the original form with error messages displayed.
+```
+
+By following these steps, you can easily validate user input in a Struts-based web application, ensuring that only valid data is processed and stored.
+
+## [Struts] What is the Struts tag library and how do you use it?
+
+The Struts tag library is a set of custom tags that simplify the creation of Struts-based web applications. The tags provide a simple and consistent way to access and manipulate Struts components such as form beans, action mappings, and application resources. Here are the basic steps for using the Struts tag library:
+
+Import the tag library: The Struts tag library is included in the Struts framework and can be imported using the following directive at the beginning of your JSP page:
+
+```jsp
+<%@ taglib prefix="s" uri="/struts-tags" %>
+```
+
+Use the tags in your JSP page: The Struts tags provide a simple and consistent way to access Struts components in your JSP page. For example, to display the value of a form bean property, you can use the <s:property> tag as follows:
+
+```jsp
+<s:property value="myFormBean.myProperty" />
+```
+
+This tag will display the value of the myProperty property of the myFormBean form bean.
+
+Pass parameters to the tags: The Struts tags accept parameters that can be used to further customize their behavior. For example, the <s:form> tag accepts a action parameter that specifies the URL to which the form should be submitted:
+
+```jsp
+<s:form action="myAction.do">
+  ...
+</s:form>
+```
+
+Use conditional tags: The Struts tag library also includes conditional tags that allow you to conditionally display or hide content based on certain conditions. For example, the <s:if> tag can be used to display content only if a certain condition is true:
+
+```jsp
+<s:if test="%{myCondition}">
+  ...
+</s:if>
+```
+
+This tag will display the enclosed content only if the myCondition expression evaluates to true.
+
+By using the Struts tag library, you can simplify the creation of Struts-based web applications and reduce the amount of custom Java code that you need to write. The tags provide a consistent and convenient way to access and manipulate Struts components, making your application more maintainable and easier to understand.
+
 ## [Struts] Struts 2 example
 
 Here's an example of a simple Struts 2 application that displays a "Hello, World!" message when a user submits a form:
@@ -489,61 +547,3 @@ In this example, the login action maps to the com.example.LoginAction Java class
 The logout action maps to the com.example.LogoutAction Java class, and has one possible result: "success". If the action is successful, the /index.jsp page will be rendered.
 
 Note that this is just a simple example, and there are many more configuration options available in Struts 2. The struts.xml file is the main configuration file for a Struts 2 application, and it defines how the framework should handle requests, map actions to Java classes, and render responses to the user.
-
-## [Struts] How do you validate user input in Struts?
-
-Struts provides several ways to validate user input in a web application. One of the most common methods is to use validation rules defined in the Struts configuration file (struts-config.xml), which specify the validation rules for each form bean. Here are the basic steps for validating user input in Struts:
-
-```dos
-Define a form bean in the struts-config.xml file: The form bean defines the properties of the form and their corresponding validation rules.
-
-Create an action class that handles the form submission: The action class implements the Action interface and is responsible for processing the user input.
-
-Define the validation rules for the form bean: The validation rules are specified in the struts-config.xml file using the <form-validation> element. You can use predefined validation rules, such as required fields or email format, or you can create custom validation rules.
-
-Associate the validation rules with the form bean: The validation rules are associated with the form bean using the <form-bean> element in the struts-config.xml file.
-
-Implement the validation logic in the action class: The action class should implement the validate() method, which is called by the framework before the execute() method. This method performs additional validation logic not covered by the XML validation rules.
-
-Display validation errors: If there are any validation errors, the framework automatically associates them with the form bean and returns control to the original form with error messages displayed.
-```
-
-By following these steps, you can easily validate user input in a Struts-based web application, ensuring that only valid data is processed and stored.
-
-## [Struts] What is the Struts tag library and how do you use it?
-
-The Struts tag library is a set of custom tags that simplify the creation of Struts-based web applications. The tags provide a simple and consistent way to access and manipulate Struts components such as form beans, action mappings, and application resources. Here are the basic steps for using the Struts tag library:
-
-Import the tag library: The Struts tag library is included in the Struts framework and can be imported using the following directive at the beginning of your JSP page:
-
-```jsp
-<%@ taglib prefix="s" uri="/struts-tags" %>
-```
-
-Use the tags in your JSP page: The Struts tags provide a simple and consistent way to access Struts components in your JSP page. For example, to display the value of a form bean property, you can use the <s:property> tag as follows:
-
-```jsp
-<s:property value="myFormBean.myProperty" />
-```
-
-This tag will display the value of the myProperty property of the myFormBean form bean.
-
-Pass parameters to the tags: The Struts tags accept parameters that can be used to further customize their behavior. For example, the <s:form> tag accepts a action parameter that specifies the URL to which the form should be submitted:
-
-```jsp
-<s:form action="myAction.do">
-  ...
-</s:form>
-```
-
-Use conditional tags: The Struts tag library also includes conditional tags that allow you to conditionally display or hide content based on certain conditions. For example, the <s:if> tag can be used to display content only if a certain condition is true:
-
-```jsp
-<s:if test="%{myCondition}">
-  ...
-</s:if>
-```
-
-This tag will display the enclosed content only if the myCondition expression evaluates to true.
-
-By using the Struts tag library, you can simplify the creation of Struts-based web applications and reduce the amount of custom Java code that you need to write. The tags provide a consistent and convenient way to access and manipulate Struts components, making your application more maintainable and easier to understand.
