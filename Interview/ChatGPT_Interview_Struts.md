@@ -478,27 +478,6 @@ When the user submits the login form, the ActionServlet intercepts the request a
 
 Note that this is just a simple example, and in real-world applications, you would typically use more complex validation logic, database interactions, and other features provided by the Struts 2 framework.
 
-## [Struts] What is SUCCESS in struts 2 app?
-
-In Struts 2, "SUCCESS" is a string constant that represents a successful result. It is commonly used as a return value from the execute() method in an Action class to indicate that the action was successfully executed.
-
-When an action is executed, it may generate a result that needs to be displayed to the user. The result can be a JSP page, a Velocity template, or any other type of content that can be rendered by Struts 2. Each result is associated with a unique string name, which can be used to reference the result in the struts.xml configuration file.
-
-By convention, the string "SUCCESS" is used to represent a successful result. When an action method returns the string "SUCCESS", the Struts 2 framework looks for a result configuration with the name "success" in the struts.xml file, and uses that result to render the response to the user.
-
-For example, consider the following struts.xml configuration:
-
-```xml
-<action name="login" class="com.example.LoginAction">
-    <result name="success">/welcome.jsp</result>
-    <result name="error">/login.jsp</result>
-</action>
-```
-
-If the execute() method in the LoginAction class returns the string "SUCCESS", Struts 2 will render the /welcome.jsp page. If it returns the string "ERROR", Struts 2 will render the /login.jsp page.
-
-Overall, using "SUCCESS" as the return value for a successful action method is a common convention in Struts 2, but it is not required. You can use any string value to represent a successful result, as long as you configure the corresponding result in the struts.xml file.
-
 ## [Struts] struts.xml example
 
 Here's an example struts.xml configuration file for a simple Struts 2 application:
@@ -547,3 +526,34 @@ In this example, the login action maps to the com.example.LoginAction Java class
 The logout action maps to the com.example.LogoutAction Java class, and has one possible result: "success". If the action is successful, the /index.jsp page will be rendered.
 
 Note that this is just a simple example, and there are many more configuration options available in Struts 2. The struts.xml file is the main configuration file for a Struts 2 application, and it defines how the framework should handle requests, map actions to Java classes, and render responses to the user.
+
+## [Struts] What is SUCCESS in struts 2 app?
+
+In Struts 2, "SUCCESS" is a string constant that represents a successful result. It is commonly used as a return value from the execute() method in an Action class to indicate that the action was successfully executed.
+
+When an action is executed, it may generate a result that needs to be displayed to the user. The result can be a JSP page, a Velocity template, or any other type of content that can be rendered by Struts 2. Each result is associated with a unique string name, which can be used to reference the result in the struts.xml configuration file.
+
+By convention, the string "SUCCESS" is used to represent a successful result. When an action method returns the string "SUCCESS", the Struts 2 framework looks for a result configuration with the name "success" in the struts.xml file, and uses that result to render the response to the user.
+
+For example, consider the following struts.xml configuration:
+
+```xml
+<action name="login" class="com.example.LoginAction">
+    <result name="success">/welcome.jsp</result>
+    <result name="error">/login.jsp</result>
+</action>
+```
+
+If the execute() method in the LoginAction class returns the string "SUCCESS", Struts 2 will render the /welcome.jsp page. If it returns the string "ERROR", Struts 2 will render the /login.jsp page.
+
+Overall, using "SUCCESS" as the return value for a successful action method is a common convention in Struts 2, but it is not required. You can use any string value to represent a successful result, as long as you configure the corresponding result in the struts.xml file.
+
+## [Struts] What is ERROR in Struts?
+
+In Struts, "ERROR" refers to a standard way of handling errors that occur during the processing of a user request. When an error occurs, Struts can redirect the user to a designated error page that displays a user-friendly message explaining the problem.
+
+The error handling mechanism in Struts is based on the concept of exception handling. If an exception occurs during the processing of a user request, Struts will catch the exception and route the request to an error page specified in the struts-config.xml configuration file. The error page can then display an appropriate error message to the user, along with any relevant information about the error.
+
+In addition to displaying a user-friendly message, Struts can also log detailed information about the error, including the stack trace and any other relevant debugging information. This can help developers diagnose and fix problems that occur in their applications.
+
+Overall, the ERROR mechanism in Struts provides a convenient and standardized way to handle errors in a web application, making it easier for developers to create robust and user-friendly applications.
