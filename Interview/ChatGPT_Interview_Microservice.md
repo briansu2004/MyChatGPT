@@ -296,7 +296,23 @@ Add custom annotations and tags: You can add custom annotations and tags to your
 
 Jaeger provides a powerful tool for monitoring and troubleshooting microservices-based architectures. By following these steps, you can quickly set up Jaeger and start capturing and analyzing trace data for your microservices.
 
-## [Microservice] 43
+## [Microservice] Jaeger vs zipkin
+
+Jaeger and Zipkin are both distributed tracing systems that help you monitor and troubleshoot microservices-based architectures. Here are some key differences between Jaeger and Zipkin:
+
+```dos
+Data model: Jaeger and Zipkin use different data models to store trace data. Jaeger uses a hierarchical data model with spans and traces, while Zipkin uses a flat data model with spans only.
+
+User interface: Jaeger and Zipkin have different user interfaces for visualizing trace data. Jaeger has a more modern and user-friendly interface with more advanced search and filtering capabilities, while Zipkin has a simpler interface with less advanced features.
+
+Distributed tracing support: Jaeger has better support for distributed tracing than Zipkin. Jaeger can handle high volumes of trace data and has more advanced features for tracing requests across multiple services and nodes.
+
+OpenTelemetry support: Jaeger has better support for the OpenTelemetry standard than Zipkin. Jaeger has native support for OpenTelemetry, while Zipkin requires additional configuration to support OpenTelemetry.
+
+Community and ecosystem: Jaeger and Zipkin have different communities and ecosystems of users and contributors. Jaeger is backed by the Cloud Native Computing Foundation (CNCF) and has a larger community and ecosystem of integrations and plugins.
+```
+
+Overall, both Jaeger and Zipkin are powerful tracing systems that can help you monitor and troubleshoot microservices-based architectures. The choice between Jaeger and Zipkin depends on your specific use case and requirements.
 
 ## [Microservice] 31
 
