@@ -384,7 +384,17 @@ NONE: Do not configure a test database. This can be useful for testing with an e
 
 In addition to the mode, @AutoConfigureTestDatabase also allows you to specify the type of database to use (e.g. H2, PostgreSQL, etc.) and the connection details for the database (e.g. username, password, URL). This can be useful for testing against a specific database configuration.
 
-## [Java] 2
+## [Java] @TestEntityManager
+
+@TestEntityManager is an annotation in the Spring Framework that can be used to inject a TestEntityManager instance into a test class. TestEntityManager is a subclass of the JPA EntityManager that is specifically designed for use in integration tests.
+
+When a test class is annotated with @TestEntityManager, Spring Boot automatically injects a TestEntityManager instance into the class, which can be used to interact with the test database. TestEntityManager provides a number of methods that are similar to those provided by EntityManager, such as persist, merge, find, and flush.
+
+One of the key benefits of using TestEntityManager instead of EntityManager is that it provides automatic transaction management. Each test method is executed in a transaction that is automatically rolled back at the end of the test, ensuring that the test database is returned to its initial state after each test.
+
+In addition to automatic transaction management, TestEntityManager also provides a number of convenience methods for creating and persisting test data. For example, it provides a persistAndFlush method that can be used to persist an entity and immediately flush the changes to the database.
+
+Overall, TestEntityManager and @TestEntityManager can be very useful for testing JPA repositories and other components that interact with a database. They provide a lightweight and efficient way to interact with the test database, and they make it easy to create and persist test data.
 
 ## [Java] 3
 
