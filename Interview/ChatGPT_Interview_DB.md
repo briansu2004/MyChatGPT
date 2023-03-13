@@ -82,9 +82,43 @@ Use cases: SQL databases are suitable for applications that require high data co
 
 In conclusion, SQL and MongoDB Query Language have different strengths and weaknesses, and the choice between the two depends on the specific needs of the application. SQL is better suited for structured data, complex queries, and transactional applications, while MongoDB is better suited for unstructured or semi-structured data, fast read and write operations, and highly scalable applications.
 
-## [DB] 1
+## [DB] Why postgreSQL?
 
-## [DB] 2
+PostgreSQL is a powerful and flexible open-source relational database management system that offers several advantages over other relational databases, such as:
+
+```dos
+Advanced features: PostgreSQL provides a range of advanced features that make it an ideal choice for complex applications. These features include support for complex queries, full-text search, geospatial data, JSON, and XML data types.
+
+Scalability: PostgreSQL is highly scalable and can handle large data volumes and high transaction loads. It supports both vertical and horizontal scaling, and its ability to handle concurrent transactions allows it to support multiple users and applications at the same time.
+
+Extensibility: PostgreSQL is highly extensible and supports the development of custom data types, functions, and procedural languages. This allows developers to build custom solutions to meet specific application requirements.
+
+Security: PostgreSQL provides robust security features, including advanced authentication and authorization mechanisms, role-based access control, and SSL encryption for data transmission.
+
+Cost-effective: PostgreSQL is open-source software, which means it is free to use and can be customized to meet specific business requirements. This makes it a cost-effective solution compared to other commercial databases.
+
+Active community: PostgreSQL has a large and active community of developers, users, and contributors who provide support, guidance, and resources to users. This community also helps to ensure that the software is continuously improved and updated with new features and functionality.
+```
+
+Overall, PostgreSQL offers a powerful and flexible solution for relational database management that is suitable for a wide range of applications, from small startups to large enterprise systems. Its advanced features, scalability, extensibility, security, cost-effectiveness, and active community make it a popular choice for developers and businesses alike.
+
+## [DB] BSON
+
+BSON (Binary JSON) is a binary-encoded format used to represent documents in MongoDB. BSON is designed to provide a more efficient way to store and transfer data than traditional JSON, while also providing additional data types and features that are not supported by JSON.
+
+BSON is similar to JSON in that it represents data as a collection of key-value pairs, but it differs in the following ways:
+
+```dos
+Binary encoding: BSON encodes data in a binary format that is more compact than JSON, making it more efficient for storage and transmission.
+
+Support for additional data types: BSON supports additional data types that are not supported by JSON, including binary data, dates, regular expressions, and other types.
+
+Order of elements: BSON preserves the order of elements in a document, while JSON does not. This makes BSON better suited for applications that require the order of elements to be preserved, such as when sending data over a network.
+
+Size limitations: BSON has a size limitation of 16 MB per document, while JSON has no such limitation. This can be a limitation in some use cases, but it is typically sufficient for most applications.
+```
+
+Overall, BSON provides a more efficient and flexible way to store and transfer data than traditional JSON, while also providing additional features and data types that are not supported by JSON.
 
 ## [DB] 3
 
