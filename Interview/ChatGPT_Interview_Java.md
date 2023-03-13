@@ -359,6 +359,33 @@ In this example, UserRegistrationService has a dependency on UserService, but th
 
 Using @Qualifier can be particularly useful when you have multiple implementations of the same interface, and you need to specify which one to use in a particular context. Without @Qualifier, Spring would not be able to determine which bean to inject and would throw an exception.
 
-## [Java] 6
+## [Java] @DataJpaTest
+
+@DataJpaTest is an annotation in the Spring Framework that can be used to test JPA repositories. When a test class is annotated with @DataJpaTest, Spring Boot sets up an in-memory database, configures Hibernate, and creates a test EntityManager for use in the tests. The annotation also provides a convenient way to inject JPA repositories and their dependencies into the test class.
+
+@DataJpaTest is typically used in integration tests to test the interactions between the application and the database. By using an in-memory database and a test EntityManager, the tests can be run without affecting the production database, and the tests can be executed quickly and reliably.
+
+In addition to setting up the test environment, @DataJpaTest also provides a number of annotations that can be used to customize the behavior of the test. For example, @AutoConfigureTestDatabase can be used to specify a different type of database to use for the test, and @TestEntityManager can be used to inject a custom EntityManager into the test class.
+
+## [Java] @AutoConfigureTestDatabase
+
+@AutoConfigureTestDatabase is an annotation in the Spring Framework that can be used to configure the test database used in integration tests. When a test class is annotated with @AutoConfigureTestDatabase, Spring Boot automatically configures a test database based on the settings in the application's configuration files.
+
+By default, Spring Boot configures an embedded in-memory database for testing, which is suitable for most tests. However, @AutoConfigureTestDatabase can be used to override the default settings and specify a different test database.
+
+There are several different modes that can be used with @AutoConfigureTestDatabase:
+
+```dos
+REPLACE: Replace the production database with a test database. This can be useful for testing data migration scripts.
+EMBEDDED: Use an in-memory database for testing. This is the default mode.
+MOCK: Use a mock database for testing. This can be useful for testing interactions with a database that is not available during testing.
+NONE: Do not configure a test database. This can be useful for testing with an existing database.
+```
+
+In addition to the mode, @AutoConfigureTestDatabase also allows you to specify the type of database to use (e.g. H2, PostgreSQL, etc.) and the connection details for the database (e.g. username, password, URL). This can be useful for testing against a specific database configuration.
+
+## [Java] 2
+
+## [Java] 3
 
 ## [Java] 7
