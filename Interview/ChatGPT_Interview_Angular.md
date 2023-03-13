@@ -999,9 +999,53 @@ export class ExampleComponent {
 
 In this example, we have an ExampleComponent with a title property and an inputValue property. The title property is displayed using interpolation in an h1 tag. The inputValue property is bound to the value attribute of an input element using property binding. The inputValue property is also displayed using interpolation in a p tag. When the user types into the input, the onInputChange method is called using event binding. This method updates the inputValue property, which causes the value displayed in the p tag to be updated as well.
 
-## [Angular] 1
+## [Angular] Angular property binding
 
-## [Angular] 2
+Angular property binding is a way to set the value of a property on a DOM element. It allows you to dynamically update the properties of an element based on changes in your application's data model.
+
+To use property binding in Angular, you need to use square brackets ([]) to surround the property name. Inside the brackets, you can provide an expression that evaluates to the value you want to set the property to. Here's an example:
+
+```angular
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-example',
+  template: `
+    <h1 [innerHTML]="title"></h1>
+    <img [src]="imageUrl" [alt]="imageAlt">
+  `
+})
+export class ExampleComponent {
+  title = 'Property Binding Example';
+  imageUrl = 'https://example.com/image.jpg';
+  imageAlt = 'Example Image';
+}
+```
+
+In this example, we have an ExampleComponent with a title property, an imageUrl property, and an imageAlt property. We use property binding to set the innerHTML property of an h1 tag to the value of the title property. We also use property binding to set the src and alt attributes of an img tag to the values of the imageUrl and imageAlt properties, respectively.
+
+You can also use property binding to set the value of any property on any element, including custom elements and Angular components. Just surround the property name with square brackets and provide an expression that evaluates to the value you want to set the property to.
+
+## [Angular] Angular Event binding
+
+Event binding in Angular allows you to listen for and respond to user events such as clicks, keypresses, and mouse movements. Here's how it works:
+
+Choose an event: Decide which event you want to listen for. For example, you might want to listen for a button click event.
+
+Bind to the event: In your component's HTML template, add an event binding to the element you want to listen for the event on. The syntax is (event)="expression". For example:
+
+`<button (click)="handleButtonClick()">Click me</button>`
+
+Define the event handler: In your component class, define a method to handle the event. This method should have the same name as the expression you used in the event binding. For example:
+
+```javascript
+handleButtonClick() {
+  console.log('Button clicked!');
+}
+```
+
+Respond to the event: In the event handler method, you can write code to respond to the event. For example, you might update a variable, call a function, or navigate to a different page.
+Overall, event binding is a powerful tool in Angular that allows you to create dynamic and interactive web applications. By listening for user events and responding to them, you can create a rich user experience that engages your users and keeps them coming back.
 
 ## [Angular] 13
 
