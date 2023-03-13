@@ -876,7 +876,34 @@ describe('AppComponent', () => {
 Run the test: To run the test, use the Angular CLI command ng test. This will run all the tests in your application and display the results in the console.
 By default, Angular CLI generates a test file for each component, directive, and service that you create. You can also create tests for pipes, validators, and other Angular features. Writing tests is an essential part of building a robust and reliable Angular application, so it's important to invest time in learning and implementing testing practices.
 
-## [Angular] 1254
+## [Angular] How to do Angular end to end test?
+
+End-to-end (E2E) testing is used to simulate real user interactions with your Angular application. Angular comes with a built-in end-to-end testing framework called Protractor. Here are the steps to create and run end-to-end tests in Angular:
+
+Install Protractor: Protractor is a Node.js package that you can install using the following command: npm install -g protractor. This will install Protractor globally on your system.
+
+Start the Selenium server: Protractor uses the Selenium web driver to control the browser during testing. You can start the Selenium server by running the command: webdriver-manager start. This will start the Selenium server in the background.
+
+Create a new test file: End-to-end tests are typically stored in a separate folder named e2e. To create a new test file, run the command: ng e2e --init. This will create a new folder e2e and generate a sample test file app.e2e-spec.ts.
+
+Write the end-to-end test: Inside the test file, write the test cases using Protractor's API. For example, to test the login page of your application, you can write a test case that logs in a user with valid credentials:
+
+```typescript
+import { browser, by, element } from 'protractor';
+
+describe('Login', () => {
+  it('should login with valid credentials', () => {
+    browser.get('/login');
+    element(by.css('#username')).sendKeys('user');
+    element(by.css('#password')).sendKeys('pass');
+    element(by.css('#login-button')).click();
+    expect(browser.getCurrentUrl()).toContain('/dashboard');
+  });
+});
+```
+
+Run the end-to-end test: To run the test, use the command: ng e2e. This will start the application and run the end-to-end test in a real browser. The test results will be displayed in the console.
+By default, Angular CLI generates a sample end-to-end test file that you can modify to suit your application's needs. Writing end-to-end tests is an important part of building a robust and reliable Angular application, so it's important to invest time in learning and implementing end-to-end testing practices.
 
 ## [Angular] 12222
 
