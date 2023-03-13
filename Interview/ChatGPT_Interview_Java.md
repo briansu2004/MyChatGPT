@@ -224,10 +224,141 @@ However, one potential disadvantage of using Lombok is that it introduces a new 
 
 In summary, both @Data and Lombok can help to reduce boilerplate code in Java classes. If you only need to generate basic getters and setters, @Data is a good choice. However, if you need more flexibility in the code generation process or want to use other features provided by Lombok, it may be worth considering the library.
 
-## [Java] 1
+## [Java] @EnableJpaRepositories
 
-## [Java] 31222
+@EnableJpaRepositories is an annotation in Spring Framework that is used to enable JPA repositories in your application. When you annotate a configuration class with @EnableJpaRepositories, Spring Framework will scan for interfaces that extend the JpaRepository interface and create instances of them as Spring beans.
 
-## [Java] 3
+Here's an example of how to use the @EnableJpaRepositories annotation in Spring Framework:
 
-## [Java] 3122
+```java
+@Configuration
+@EnableJpaRepositories(basePackages = "com.example.repository")
+public class MyConfiguration {
+  // Other configuration code
+}
+```
+
+In this example, the MyConfiguration class is annotated with @Configuration, which indicates that it is a Spring configuration class. It is also annotated with @EnableJpaRepositories, which enables JPA repositories in the application. The basePackages attribute of the annotation specifies the package(s) in which Spring Framework should scan for JPA repositories. In this case, it is set to "com.example.repository", so Spring Framework will scan that package and any of its sub-packages for JPA repositories.
+
+Once you have enabled JPA repositories using @EnableJpaRepositories, you can create repository interfaces that extend the JpaRepository interface and use them to interact with the database. Spring Framework will automatically create instances of these repository interfaces as Spring beans and inject them into other components as needed.
+
+Note that @EnableJpaRepositories can also be used to specify other configuration options, such as the name of the EntityManagerFactory bean to use or the name of the transaction manager bean to use. Additionally, you can use the @Repository annotation on a repository interface to indicate that it is a repository component, although this is not strictly necessary when using @EnableJpaRepositories.
+
+## [Java] @Configuration
+
+@Configuration is an annotation in Spring Framework that is used to indicate that a class is a configuration class. Configuration classes define beans and other Spring-related configuration, such as database connections, thread pools, and message queues.
+
+When you annotate a class with @Configuration, Spring Framework will automatically detect it and use it to create and configure beans in the application context. Configuration classes can also be used to define bean dependencies and to configure other parts of the Spring application context, such as transaction management and security.
+
+Here's an example of how to use the @Configuration annotation in Spring Framework:
+
+```java
+@Configuration
+public class MyConfiguration {
+  @Bean
+  public MyBean myBean() {
+    return new MyBean();
+  }
+
+  // Other bean definitions and configuration methods
+}
+```
+
+In this example, the MyConfiguration class is annotated with @Configuration, indicating that it is a configuration class. The class also has a method, myBean(), that is annotated with @Bean. This method defines a bean of type MyBean and returns an instance of it. When the application context is created, Spring Framework will detect the MyConfiguration class and call its methods to create and configure beans in the context.
+
+Note that @Configuration can also be used with other annotations, such as @Import and @ComponentScan, to import configuration from other classes or to scan for components in the application. Additionally, @Configuration classes can be used to define other configuration options, such as database connections and transaction management.
+
+## [Java] @Service
+
+@Service is an annotation in Spring Framework that is used to indicate that a class is a service component. Service components are typically used to encapsulate business logic or other application functionality that is not related to data access or web presentation.
+
+When you annotate a class with @Service, Spring Framework will automatically detect it and create an instance of the class as a Spring bean. You can then use the service component in other parts of your application, such as controllers or other service components, by injecting it using the @Autowired annotation.
+
+Here's an example of how to use the @Service annotation in Spring Framework:
+
+```java
+@Service
+public class MyService {
+  public void doSomething() {
+    // Business logic here
+  }
+}
+```
+
+In this example, the MyService class is annotated with @Service, indicating that it is a service component. The class has a method, doSomething(), that encapsulates business logic or other application functionality. When the application context is created, Spring Framework will detect the MyService class and create an instance of it as a Spring bean. You can then use the service component in other parts of your application by injecting it using the @Autowired annotation.
+
+Note that @Service can also be used with other annotations, such as @Transactional, to indicate that the service component should be wrapped in a transaction. Additionally, you can use the @Component annotation to indicate that a class is a general-purpose Spring component, although @Service is preferred for service components to make their purpose more explicit.
+
+## [Java] Spring @Qualifier
+
+In Spring Framework, the @Qualifier annotation is used to specify which bean to inject when there are multiple beans of the same type. When you annotate a field or parameter with @Qualifier and provide the name of a bean, Spring Framework will inject the bean with that name into the field or parameter.
+
+Here's an example of how to use the @Qualifier annotation in Spring Framework:
+
+```java
+@Service
+public class MyService {
+  @Autowired
+  @Qualifier("myRepository1")
+  private MyRepository myRepository;
+
+  // Service methods that use MyRepository
+}
+```
+
+In this example, the MyService class is annotated with @Service, which indicates that it is a service component. The class also has a field, myRepository, that is annotated with both @Autowired and @Qualifier. The @Autowired annotation tells Spring Framework to inject an instance of the MyRepository type into the field, and the @Qualifier annotation specifies that it should use the bean with the name "myRepository1".
+
+You can also use @Qualifier on constructor parameters or setter methods, in which case Spring Framework will use constructor or setter injection to create the instance of the class. Additionally, you can use @Qualifier with @Bean methods to specify which bean to create when there are multiple beans of the same type.
+
+Note that @Qualifier is often used in conjunction with other Spring annotations, such as @Autowired, @Component, and @Repository, to provide more fine-grained control over bean injection and configuration.
+
+## [Java] A better example of @Qualifier
+
+Sure! Here's an example that demonstrates how @Qualifier can be used to resolve an ambiguity when multiple beans of the same type are present in the Spring container:
+
+Suppose you have two implementations of a UserService interface:
+
+```java
+public interface UserService {
+    void saveUser(User user);
+}
+
+@Service("userService1")
+public class UserServiceImpl1 implements UserService {
+    @Override
+    public void saveUser(User user) {
+        // Implementation specific to UserServiceImpl1
+    }
+}
+
+@Service("userService2")
+public class UserServiceImpl2 implements UserService {
+    @Override
+    public void saveUser(User user) {
+        // Implementation specific to UserServiceImpl2
+    }
+}
+```
+
+Both implementations have been annotated with @Service, which registers them as Spring beans. If you want to inject one of these beans into another component, you can use @Qualifier to disambiguate between them. Here's an example:
+
+```java
+@Service
+public class UserRegistrationService {
+    @Autowired
+    @Qualifier("userService1")
+    private UserService userService;
+
+    public void registerUser(User user) {
+        userService.saveUser(user);
+    }
+}
+```
+
+In this example, UserRegistrationService has a dependency on UserService, but there are two beans of type UserService in the Spring container. To specify which one to use, we've added the @Qualifier annotation to the userService field, with a value of "userService1". This tells Spring to inject the bean with the ID "userService1", which is an instance of UserServiceImpl1.
+
+Using @Qualifier can be particularly useful when you have multiple implementations of the same interface, and you need to specify which one to use in a particular context. Without @Qualifier, Spring would not be able to determine which bean to inject and would throw an exception.
+
+## [Java] 6
+
+## [Java] 7
