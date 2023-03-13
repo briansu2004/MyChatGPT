@@ -87,11 +87,188 @@ Dependency Injection: Struts 2 provides built-in support for Dependency Injectio
 
 Overall, Struts 2 is a more modern and flexible framework that builds on the strengths of Struts 1 while addressing some of its limitations. It provides a more powerful and extensible architecture, better support for Ajax and dynamic user interfaces, and more convenient configuration and dependency injection options.
 
-## [Struts] 3
+## [Struts] How does Struts handle requests and responses?
 
-## [Struts] 4
+Struts handles requests and responses through its ActionServlet, which acts as the central controller of the framework. When a user makes a request to a Struts-based web application, the request is first intercepted by the ActionServlet. Here is how Struts handles requests and responses:
 
-## [Struts] 32
+```dos
+Request Handling: The incoming request is first intercepted by the ActionServlet. The ActionServlet reads the request and extracts the necessary information, such as the URL, parameters, and headers.
+
+Action Mapping: The ActionServlet then consults the Action mapping defined in the Struts configuration file to determine which Action class to invoke. The Action mapping specifies the URL pattern to match and the corresponding Action class to use.
+
+Action Processing: The ActionServlet then creates an instance of the Action class and invokes the appropriate method to process the request. The Action class handles the request by interacting with the Model and populating the necessary data into the View.
+
+View Rendering: The Action class returns an instance of ActionForward, which specifies the View to display the response. The View can be a JSP page, Velocity template, or any other View technology supported by Struts. The View is responsible for rendering the response and presenting the processed data to the user.
+
+Response Handling: Once the View has rendered the response, the ActionServlet sends the response back to the client. Struts automatically sets the necessary HTTP headers, such as content type and content length.
+
+Exception Handling: If an exception occurs during request processing, Struts provides a mechanism for handling the exception and displaying an appropriate error message to the user. This mechanism is implemented through the use of the ActionError and ActionMessage classes.
+```
+
+Overall, Struts provides a well-defined structure and clear separation of concerns, which makes it easier to handle requests and responses in a consistent and maintainable manner. The ActionServlet acts as the central controller and delegates the processing to the appropriate Action classes and Views.
+
+## [Struts] Struts 2 example
+
+Here's an example of a simple Struts 2 application that displays a "Hello, World!" message when a user submits a form:
+
+Create a new Maven project in your IDE, and add the Struts 2 dependency to your pom.xml file:
+
+```xml
+<dependency>
+    <groupId>org.apache.struts</groupId>
+    <artifactId>struts2-core</artifactId>
+    <version>2.5.26</version>
+</dependency>
+```
+
+Create a new Java class named HelloWorldAction that extends ActionSupport. This class will handle the user request and return the response:
+
+```java
+package com.example.struts2;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class HelloWorldAction extends ActionSupport {
+
+    private String message;
+
+    public String execute() {
+        message = "Hello, World!";
+        return SUCCESS;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+}
+```
+
+Create a new JSP file named hello.jsp that displays the message returned by the action:
+
+```jsp
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Hello, Struts 2!</title>
+</head>
+<body>
+    <h1>${message}</h1>
+</body>
+</html>
+```
+
+Create a new Struts configuration file named struts.xml in the src/main/resources directory. This file defines the mapping between the incoming request and the HelloWorldAction class:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="hello" class="com.example.struts2.HelloWorldAction">
+            <result name="success">/hello.jsp</result>
+        </action>
+    </package>
+</struts>
+```
+
+Run the application by deploying it to a web server, and navigate to the following URL in your web browser:
+
+```bash
+http://localhost:8080/yourapp/hello.action
+```
+
+This should display the "Hello, World!" message in your web browser.
+
+Overall, this example demonstrates how to create a simple Struts 2 application that handles user requests and returns a response using an Action class and a JSP View. The Struts configuration file maps the incoming request to the appropriate Action class and View.
+
+## [Struts] How do you handle form data in Struts?
+
+In Struts, form data can be handled using the ActionForm class. Here's a step-by-step guide on how to handle form data in Struts:
+
+Define a Java class that extends the ActionForm class. This class will represent the form data submitted by the user. For example:
+
+```java
+public class LoginForm extends ActionForm {
+    private String username;
+    private String password;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+```
+
+In the struts-config.xml file, define the Action that will handle the form submission, and map it to the appropriate JSP page. For example:
+
+```xml
+<action name="login" class="com.example.LoginAction">
+    <result name="success">/welcome.jsp</result>
+    <result name="input">/login.jsp</result>
+</action>
+```
+
+In the JSP file that displays the form (login.jsp in this case), use the Struts form tag to generate the HTML form. For example:
+
+```jsp
+<html>
+  <head>
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h2>Login Form</h2>
+    <s:form action="login">
+      <s:textfield name="username" label="Username" />
+      <s:password name="password" label="Password" />
+      <s:submit value="Login" />
+    </s:form>
+  </body>
+</html>
+```
+
+In the Action class that handles the form submission, declare a property of the LoginForm class, and implement a method to handle the form submission. For example:
+
+```java
+public class LoginAction extends ActionSupport {
+    private LoginForm loginForm;
+
+    public LoginForm getLoginForm() {
+        return loginForm;
+    }
+
+    public void setLoginForm(LoginForm loginForm) {
+        this.loginForm = loginForm;
+    }
+
+    public String execute() {
+        String username = loginForm.getUsername();
+        String password = loginForm.getPassword();
+
+        // Validate the username and password
+        // ...
+
+        return SUCCESS;
+    }
+}
+```
+
+When the form is submitted, the Struts framework will automatically create an instance of the LoginForm class, populate its properties with the form data, and set it as a property of the LoginAction class. The execute method can then access the form data by calling the getter methods of the LoginForm instance.
+
+Overall, this approach provides a convenient way to handle form data in Struts, and it allows you to easily map form data to Java objects, and validate the input data before processing it.
 
 ## [Struts] 42
 
