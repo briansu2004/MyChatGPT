@@ -22,6 +22,8 @@
 
 [Struts](Interview/ChatGPT_Interview_Struts.md)
 
+[JSP](Interview/ChatGPT_Interview_JSP.md)
+
 [Bootstrap](Interview/ChatGPT_Interview_Bootstrap.md)
 
-[JSP](Interview/ChatGPT_Interview_JSP.md)
+[CSS](Interview/ChatGPT_Interview_CSS.md)
