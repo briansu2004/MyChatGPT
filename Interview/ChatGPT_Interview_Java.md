@@ -178,7 +178,37 @@ Package the application: Once you have verified that your application is working
 Deploy the application: Finally, you can deploy your application to a production environment such as a server or a cloud-based platform like AWS or Google Cloud.
 ```
 
-## [Java] 3
+## [Java] @NoArgsConstructor @AllArgsConstructor
+
+@NoArgsConstructor and @AllArgsConstructor are annotations used in Java to generate constructors for classes.
+
+@NoArgsConstructor is used to generate a no-argument constructor for a class. This constructor can be useful when you need to create an instance of the class without passing any arguments. This annotation can be particularly useful when working with frameworks like Spring that require a no-argument constructor for certain operations.
+
+Example usage:
+
+```java
+@NoArgsConstructor
+public class MyClass {
+  private String name;
+  private int age;
+  // ... other fields and methods
+}
+```
+
+@AllArgsConstructor is used to generate a constructor that takes arguments for all of the class's fields. This can be useful when you need to create an instance of the class with all of its fields initialized.
+
+Example usage:
+
+```java
+@AllArgsConstructor
+public class MyClass {
+  private String name;
+  private int age;
+  // ... other fields and methods
+}
+```
+
+In both cases, the annotations generate the corresponding constructor at compile time. If you need to customize the generated constructors, you can use additional annotations and annotations arguments.
 
 ## [Java] 321
 
