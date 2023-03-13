@@ -840,7 +840,41 @@ Build and deploy the Angular application: Once the application is ready for prod
 
 These are the typical steps for creating a new Angular application. However, depending on the specific requirements of your application, you may need to modify or add additional steps.
 
-## [Angular] 1
+## [Angular] How to do angular tests
+
+Angular comes with a built-in testing framework that allows you to write unit tests for your application. Here are the steps to create and run tests in Angular:
+
+Create a new test file: Angular tests are typically stored in a separate folder named src/app. To create a new test file, create a new .spec.ts file with the same name as the component or service you want to test. For example, if you want to test the AppComponent, create a new file named app.component.spec.ts.
+
+Write the test: Inside the test file, write the test cases using Jasmine testing framework. Jasmine is included with Angular by default. For example, to test the AppComponent, you can write a test case that checks if the title property is set correctly:
+
+```typescript
+import { TestBed, async } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent],
+    }).compileComponents();
+  }));
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have as title 'my-app'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('my-app');
+  });
+});
+```
+
+Run the test: To run the test, use the Angular CLI command ng test. This will run all the tests in your application and display the results in the console.
+By default, Angular CLI generates a test file for each component, directive, and service that you create. You can also create tests for pipes, validators, and other Angular features. Writing tests is an essential part of building a robust and reliable Angular application, so it's important to invest time in learning and implementing testing practices.
 
 ## [Angular] 1254
 
